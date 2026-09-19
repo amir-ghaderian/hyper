@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="theme-color" content="#064e3b">
+    <meta name="description" content="منوی دیجیتال هایپرمارکت">
+    <title>منوی هایپرمارکت</title>
+    <style>
+        :root {
+            --g: #064e3b;
+            --g2: #047857;
+            --g3: #ecfdf5;
+            --bg: #f6f8f7;
+            --text: #17211d;
+            --muted: #718078;
+            --line: #e4ebe7
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: Tahoma, "Segoe UI", Arial, sans-serif;
+            -webkit-font-smoothing: antialiased
+        }
+
+        button,
+        input {
+            font: inherit
+        }
+
+        button {
+            cursor: pointer
+        }
+
+        .top {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: rgba(255, 255, 255, .95);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--line)
+        }
+
+        .topin {
+            max-width: 1180px;
+            margin: auto;
+            padding: 11px 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            min-width: max-content
+        }
+
+        .logo {
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            background: var(--g);
+            color: #fff;
+            display: grid;
+            place-items: center;
+            font-weight: 900;
+            font-size: 19px
+        }
+
+        .brand b {
+            display: block;
+            font-size: 15px;
+            color: #073b2d
+        }
+
+        .brand small {
+            color: #87928d;
+            font-size: 10px
+        }
+
+        .search {
+            position: relative;
+            flex: 1;
+            max-width: 540px;
+            margin-right: auto
+        }
+
+        .search input {
+            width: 100%;
+            border: 1px solid var(--line);
+            background: #f8faf9;
+            border-radius: 15px;
+            padding: 11px 40px 11px 12px;
+            outline: 0;
+            font-size: 12px
+        }
+
+        .search input:focus {
+            background: #fff;
+            border-color: #9bd5bf;
+            box-shadow: 0 0 0 4px rgba(5, 150, 105, .08)
+        }
+
+        .glass {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #78857f
+        }
+
+        .wrap {
+            max-width: 1180px;
+            margin: auto;
+            padding: 15px
+        }
+
+        .hero {
+            border-radius: 27px;
+            padding: 30px 22px;
+            color: #fff;
+            background: linear-gradient(135deg, #052e24, #047857);
+            box-shadow: 0 18px 45px rgba(6, 78, 59, .18);
+            overflow: hidden;
+            position: relative
+        }
+
+        .hero:after {
+            content: "";
+            position: absolute;
+            width: 230px;
+            height: 230px;
+            border-radius: 50%;
+            left: -80px;
+            bottom: -130px;
+            background: rgba(255, 255, 255, .08)
+        }
+
+        .kicker {
+            font-size: 11px;
+            font-weight: 800;
+            color: #a7f3d0
+        }
+
+        h1 {
+            font-size: clamp(26px, 6vw, 42px);
+            line-height: 1.35;
+            margin: 8px 0;
+            font-weight: 900
+        }
+
+        .hero p {
+            margin: 0;
+            max-width: 650px;
+            color: #d1fae5;
+            font-size: 12px;
+            line-height: 2
+        }
+
+        .stats {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 17px
+        }
+
+        .stat {
+            padding: 7px 10px;
+            border: 1px solid rgba(255, 255, 255, .13);
+            background: rgba(255, 255, 255, .1);
+            border-radius: 11px;
+            font-size: 10px
+        }
+
+        .chips {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 3px 0 5px;
+            scrollbar-width: none
+        }
+
+        .chips::-webkit-scrollbar {
+            display: none
+        }
+
+        .chip {
+            flex: 0 0 auto;
+            border: 1px solid var(--line);
+            background: #fff;
+            color: #5d6964;
+            border-radius: 999px;
+            padding: 9px 13px;
+            font-size: 11px;
+            font-weight: 800
+        }
+
+        .chip.active {
+            background: var(--g);
+            border-color: var(--g);
+            color: #fff
+        }
+
+        .category {
+            background: #fff;
+            border: 1px solid #e5ece8;
+            border-radius: 23px;
+            padding: 16px;
+            margin-top: 15px;
+            box-shadow: 0 10px 35px rgba(16, 70, 45, .06)
+        }
+
+        .chead {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 13px
+        }
+
+        .chead h2 {
+            margin: 0;
+            font-size: 19px;
+            color: #052e24
+        }
+
+        .chead p {
+            margin: 5px 0 0;
+            color: var(--muted);
+            font-size: 10px
+        }
+
+        .count {
+            white-space: nowrap;
+            background: var(--g3);
+            color: var(--g2);
+            padding: 7px 10px;
+            border-radius: 999px;
+            font-size: 10px;
+            font-weight: 900
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px
+        }
+
+        .card {
+            border: 1px solid #e9eeeb;
+            border-radius: 17px;
+            overflow: hidden;
+            background: #fff;
+            min-width: 0;
+            cursor: pointer
+        }
+
+        .photo {
+            aspect-ratio: 1;
+            background: #f5f7f6;
+            display: grid;
+            place-items: center;
+            overflow: hidden
+        }
+
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block
+        }
+
+        .fallback {
+            display: none;
+            color: #9aa49f;
+            font-size: 10px;
+            padding: 10px;
+            text-align: center
+        }
+
+        .body {
+            padding: 10px
+        }
+
+        .title {
+            font-size: 11px;
+            line-height: 1.8;
+            font-weight: 900;
+            min-height: 40px;
+            color: #26332d
+        }
+
+        .desc {
+            margin-top: 5px;
+            color: #7a8580;
+            font-size: 9px;
+            line-height: 1.8;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden
+        }
+
+        .more {
+            margin-top: 8px;
+            color: var(--g2);
+            font-size: 9px;
+            font-weight: 900
+        }
+
+        .empty {
+            text-align: center;
+            padding: 45px 15px;
+            color: #77837d;
+            font-size: 12px
+        }
+
+        .footer {
+            text-align: center;
+            color: #89948f;
+            font-size: 10px;
+            padding: 5px 15px 32px
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 50;
+            background: rgba(0, 0, 0, .52);
+            padding: 14px;
+            align-items: flex-end;
+            justify-content: center
+        }
+
+        .modal.show {
+            display: flex
+        }
+
+        .modalbox {
+            width: min(620px, 100%);
+            max-height: 90vh;
+            overflow: auto;
+            background: #fff;
+            border-radius: 24px;
+            padding: 16px
+        }
+
+        .mhead {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px
+        }
+
+        .mhead h3 {
+            margin: 0;
+            font-size: 17px;
+            line-height: 1.7;
+            color: #052e24
+        }
+
+        .close {
+            border: 0;
+            background: #eff3f1;
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            font-size: 20px
+        }
+
+        .mphoto {
+            margin-top: 12px;
+            aspect-ratio: 1.15;
+            background: #f6f8f7;
+            border-radius: 17px;
+            overflow: hidden
+        }
+
+        .mphoto img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain
+        }
+
+        .mdesc {
+            color: #68746e;
+            font-size: 11px;
+            line-height: 2;
+            margin: 12px 0 3px
+        }
+
+        @media(min-width:700px) {
+            .grid {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                gap: 14px
+            }
+
+            .category {
+                padding: 21px
+            }
+
+            .hero {
+                padding: 40px 36px
+            }
+
+            .modal {
+                align-items: center
+            }
+        }
+
+        @media(max-width:560px) {
+            .search {
+                order: 3;
+                flex-basis: 100%;
+                max-width: none
+            }
+
+            .brand small {
+                display: none
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="top">
+        <div class="topin">
+            <div class="brand">
+                <div class="logo">ه</div>
+                <div><b>هایپرمارکت</b><small>منوی محصولات</small></div>
+            </div>
+            <div class="search"><span class="glass">⌕</span><input id="search" type="search"
+                    placeholder="جستجوی محصول..." autocomplete="off"></div>
+        </div>
+    </header>
+
+    <section class="wrap">
+        <div class="hero">
+            <div class="kicker">منوی دیجیتال فروشگاه</div>
+            <h1>محصولات هایپرمارکت</h1>
+            <p>محصولات فروشگاه را در دسته‌بندی‌های مختلف مشاهده کنید و با جستجو، محصول موردنظر خود را سریع‌تر پیدا کنید.
+            </p>
+            <div class="stats">
+                <div class="stat">تعداد محصولات: <b id="total">0</b></div>
+                <div class="stat">۴ دسته‌بندی</div>
+            </div>
+        </div>
+    </section>
+
+    <nav class="wrap">
+        <div class="chips" id="chips"></div>
+    </nav>
+    <main class="wrap" id="content"></main>
+    <div class="footer">خرید آسان، انتخاب مطمئن</div>
+
+    <div class="modal" id="modal">
+        <div class="modalbox">
+            <div class="mhead">
+                <h3 id="mtitle"></h3><button class="close" id="close">×</button>
+            </div>
+            <div class="mphoto"><img id="mimage" alt=""></div>
+            <div class="mdesc" id="mdesc"></div>
+        </div>
+    </div>
+
+    <script>
+        const products = [{ "id": 5, "name": "شامپو نارگیل انواع مو حاجی شاکر ۵۰۰ میل", "category": "بهداشتی", "description": "شامپو نارگیل حاجی شاکر مناسب انواع مو، با عصاره خالص نارگیل که به تغذیه و ترمیم مو، افزایش درخشندگی و حفظ رطوبت و نرمی مو کمک می‌کند. مناسب استفاده روزانه بانوان و آقایان.", "image": "./products/015.jpeg" }, { "id": 6, "name": "اسپری خوشبو کننده محیط حیات آلفا ۳۵۰ میل", "category": "شوینده", "description": "اسپری خوشبو کننده محیط حیات آلفا با رایحه لوندر و حجم ۳۵۰ میلی‌لیتر، مناسب برای خانه و محل کار با رایحه‌ای دل‌انگیز و ماندگاری بالا.", "image": "./products/018.jpeg" }, { "id": 7, "name": "اسپری خوشبو کننده هوا حیات Spring ۳۵۰ میل", "category": "شوینده", "description": "اسپری خوشبو کننده هوا حیات Spring با رایحه گل‌های بهاری، فضایی تازه، دلپذیر و آرامش‌بخش در خانه ایجاد می‌کند و با پخش یکنواخت، رایحه‌ای سبک و ماندگار به محیط می‌بخشد.", "image": "./products/016.jpeg" }, { "id": 8, "name": "شامپو عصاره روغن بادام حاجی شاکر", "category": "بهداشتی", "description": "شامپو حاجی شاکر با عصاره روغن بادام، مناسب مراقبت از مو و کمک به تقویت و حفظ سلامت موها. فرمول حاوی روغن بادام به مراقبت از مو و کاهش ریزش ناشی از ضعف و آسیب مو کمک می‌کند.", "image": "./products/011.jpeg" }, { "id": 9, "name": "قرص ماشین ظرفشویی پلاتینوم فیری", "category": "شوینده", "description": "قرص ماشین ظرفشویی پلاتینوم فیری با قدرت پاک‌کنندگی بالا، مناسب شست‌وشوی ظروف و از بین بردن چربی و آلودگی‌ها. دارای جلادهنده بیشتر و قابلیت کمک به جرم‌گیری فیلتر ماشین ظرفشویی در هر بار شست‌وشو.", "image": "./products/013.jpeg" }, { "id": 10, "name": "قرص ماشین ظرفشویی فینیش پاوربال کوانتوم مکس", "category": "شوینده", "description": "قرص ماشین ظرفشویی فینیش پاوربال کوانتوم مکس با قدرت شویندگی و چربی‌زدایی بالا، مناسب از بین بردن لکه‌ها و مواد غذایی خشک‌شده روی ظروف. دارای ترکیبات براق‌کننده و قدرت پاک‌کنندگی بالا برای شست‌وشوی مؤثر ظروف.", "image": "./products/012.jpeg" }, { "id": 11, "name": "مایع براق کننده ماشین ظرفشویی فینیش", "category": "شوینده", "description": "مایع براق‌کننده ماشین ظرفشویی فینیش برای درخشان‌تر شدن ظروف و جلوگیری از باقی ماندن لکه و آثار آب روی آن‌ها. مناسب استفاده مداوم در ماشین ظرفشویی و کمک به داشتن ظروفی تمیز و براق.", "image": "./products/014.jpeg" }, { "id": 12, "name": "پاک کننده چربی و آلودگی آسپرکس Sarı Güç Ultra", "category": "شوینده", "description": "پاک‌کننده قدرتمند آسپرکس Sarı Güç Ultra برای از بین بردن چربی و آلودگی‌های سخت از سطوح مختلف مانند اجاق گاز، فر، هود، سینک، کاشی، سرامیک، استیل و سایر سطوح قابل شست‌وشو. دارای رایحه لیمویی و فاقد پارابن و سفیدکننده.", "image": "./products/001.jpeg" }, { "id": 13, "name": "اسپری ضد تعریق مردانه رکسونا Transparent Ice Invisible", "category": "بهداشتی", "description": "اسپری ضد تعریق مردانه رکسونا مدل Transparent Ice Invisible با رایحه‌ای خنک و مناسب استفاده روزانه، برای کمک به کنترل تعریق و ایجاد حس تازگی و تمیزی در طول روز.", "image": "./products/031.jpeg" }, { "id": 14, "name": "اسپری ضد تعریق مردانه رکسونا Cobalt Protection ۲۰۰ میل", "category": "بهداشتی", "description": "اسپری ضد تعریق مردانه رکسونا Motionsense Cobalt Protection با حجم ۲۰۰ میلی‌لیتر، مناسب استفاده روزانه و کمک به کنترل تعریق و ایجاد حس تازگی و محافظت در طول روز.", "image": "./products/002.jpeg" }, { "id": 15, "name": "اسپری ضد تعریق مردانه رکسونا ۷۲ ساعته ۲۰۰ میل", "category": "بهداشتی", "description": "اسپری ضد تعریق مردانه رکسونا با محافظت ۷۲ ساعته و حجم ۲۰۰ میلی‌لیتر، مناسب استفاده روزانه برای کمک به کنترل تعریق و ایجاد حس تازگی و محافظت طولانی‌مدت. این محصول در رایحه‌ها و تنوع‌های مختلف عرضه می‌شود.", "image": "./products/028.jpeg" }, { "id": 16, "name": "اسپری ضد تعریق زنانه رکسونا ۲۰۰ میل", "category": "بهداشتی", "description": "اسپری ضد تعریق زنانه رکسونا Freshness Душа با حجم ۲۰۰ میلی‌لیتر، ساخت روسیه و بدون الکل. دارای تکنولوژی MotionSense برای محافظت در برابر تعریق و حفظ خشکی زیر بغل هنگام فعالیت و ورزش، با حس طراوت و شادابی در تمام فصول سال.", "image": "./products/022.jpeg" }, { "id": 17, "name": "اسپری ضد تعریق زنانه رکسونا Invisible Pure", "category": "بهداشتی", "description": "اسپری ضد تعریق زنانه رکسونا Invisible Pure با فرمول بدون الکل، ضد لک و ماندگاری ۴۸ ساعته، مناسب استفاده روزانه برای محافظت در برابر تعریق و کمک به حفظ حس تازگی و تمیزی.", "image": "./products/005.jpeg" }, { "id": 18, "name": "آب آشامیدنی زمزم ۱۵۰۰ میلی‌لیتر", "category": "نوشیدنی", "description": "آب آشامیدنی زمزم با حجم ۱۵۰۰ میلی‌لیتر، مناسب مصرف روزانه و همراه داشتن در منزل، محل کار، سفر و فعالیت‌های روزمره.", "image": "./products/010.jpeg" }, { "id": 19, "name": "آب آشامیدنی گریسون ۱.۵ لیتر", "category": "نوشیدنی", "description": "آب آشامیدنی گریسون با حجم ۱.۵ لیتر، مناسب مصرف روزانه در منزل، محل کار، سفر و فعالیت‌های روزمره.", "image": "./products/008.jpeg" }, { "id": 20, "name": "نوشابه قوطی پرتقالی فانتا ۳۳۰ میلی‌لیتر", "category": "نوشیدنی", "description": "نوشابه پرتقالی فانتا در قوطی ۳۳۰ میلی‌لیتری، با طعم پرتقالی و گازدار، مناسب مصرف روزانه و پذیرایی.", "image": "./products/004.jpeg" }, { "id": 21, "name": "نوشابه کوکاکولا ۳۳۰ میلی‌لیتر قوطی", "category": "نوشیدنی", "description": "نوشابه کوکاکولا در قوطی ۳۳۰ میلی‌لیتری، با طعم کلاسیک و گازدار، مناسب مصرف روزانه و پذیرایی.", "image": "./products/003.jpeg" }, { "id": 22, "name": "آب معدنی رادیکال ۵۰۰ میلی‌لیتر و ۱.۵ لیتری", "category": "نوشیدنی", "description": "آب معدنی رادیکال در دو حجم ۵۰۰ میلی‌لیتر و ۱.۵ لیتری، مناسب مصرف روزانه، همراه داشتن در سفر، محل کار و فعالیت‌های روزمره.", "image": "./products/040.jpeg" }, { "id": 23, "name": "نوار بهداشتی تافته مدل پروانه ویژه شب ۷ عددی", "category": "بهداشتی", "description": "نوار بهداشتی بالدار تافته مدل پروانه ویژه شب، نازک و مناسب استفاده در دوران قاعدگی. دارای محافظت بسیار بالا در برابر نشتی، سطح نرم و سازگار با پوست و مناسب برای پوست‌های حساس.", "image": "./products/007.jpeg" }, { "id": 24, "name": "نوار بهداشتی تافته مدل Yalda Night سایز خیلی بزرگ ۷ عددی", "category": "بهداشتی", "description": "نوار بهداشتی تافته مدل Yalda Night با سایز خیلی بزرگ و بسته ۷ عددی، مناسب پوست‌های حساس. دارای جذب بالا، لایه رویی لطیف به نرمی کتان، ضخامت کم و باله‌های تثبیت‌کننده برای راحتی و محافظت بیشتر در دوران قاعدگی.", "image": "./products/026.jpeg" }, { "id": 25, "name": "نوار بهداشتی مای لیدی مدل Ultra به نرمی ابریشم سایز خیلی بزرگ ۷ عددی", "category": "بهداشتی", "description": "نوار بهداشتی مای لیدی مدل Ultra به نرمی ابریشم، سایز خیلی بزرگ و بسته ۷ عددی، با طراحی مناسب برای راحتی و محافظت بیشتر در دوران قاعدگی.", "image": "./products/029.jpeg" }, { "id": 26, "name": "نوار بهداشتی پنبه‌ای مای لیدی سایز خیلی بزرگ", "category": "بهداشتی", "description": "نوار بهداشتی پنبه‌ای مای لیدی سایز خیلی بزرگ با طراحی ارگونومیک و ضخامت کم، مناسب استفاده در دوران قاعدگی. دارای طول ۳۲۰ میلی‌متر و طراحی لطیف برای ایجاد راحتی و آرامش بیشتر.", "image": "./products/024.jpeg" }, { "id": 27, "name": "نوار بهداشتی مای لیدی مدل New Classic Semi Thick سایز بزرگ", "category": "بهداشتی", "description": "نوار بهداشتی مای لیدی مدل New Classic با ضخامت متوسط و سایز بزرگ، مناسب استفاده در دوران قاعدگی و طراحی‌شده برای ایجاد راحتی و محافظت مناسب.", "image": "./products/025.jpeg" }, { "id": 28, "name": "نوار بهداشتی مای لیدی مدل Classic سایز بزرگ", "category": "بهداشتی", "description": "نوار بهداشتی مای لیدی مدل Classic سایز بزرگ با ضخامت بیشتر و لایه رویی پنبه‌ای و ضد حساسیت، مناسب استفاده در دوران قاعدگی و طراحی‌شده برای راحتی و محافظت مناسب.", "image": "./products/025.jpeg" }, { "id": 29, "name": "نوار بهداشتی بالدار مای لیدی مدل Classic Pink سایز بزرگ ۱۰ عددی", "category": "بهداشتی", "description": "نوار بهداشتی بالدار مای لیدی مدل Classic Pink سایز بزرگ، با ضخامت بیشتر و مناسب استفاده در طول روز و شب. بسته ۱۰ عددی و طراحی‌شده برای راحتی و محافظت مناسب در دوران قاعدگی.", "image": "./products/017.jpeg" }, { "id": 30, "name": "دستمال توالت پاپیا ۴ لایه ۲ عددی", "category": "بهداشتی", "description": "دستمال توالت پاپیا با ساختار ۴ لایه و بسته ۲ عددی، مناسب استفاده روزانه و طراحی‌شده برای جذب مناسب و ایجاد نرمی و راحتی بیشتر.", "image": "./products/019.jpeg" }, { "id": 31, "name": "دستمال کاغذی پاپیا مدل اقتصادی ۲۵۰ برگ ۸ عددی", "category": "بهداشتی", "description": "دستمال کاغذی پاپیا مدل اقتصادی با ۲۵۰ برگ در هر بسته و بسته‌بندی ۸ عددی، مناسب استفاده روزمره در منزل، محل کار و پذیرایی.", "image": "./products/021.jpeg" }, { "id": 32, "name": "دستمال توالت تنو مدل کلاسیک ۳ لایه ۲ عددی", "category": "بهداشتی", "description": "دستمال توالت تنو مدل کلاسیک با ساختار ۳ لایه و بسته ۲ عددی، مناسب استفاده روزانه و طراحی‌شده برای نرمی، جذب مناسب و راحتی بیشتر.", "image": "./products/006.jpeg" }, { "id": 33, "name": "شیشه پاک کن تاژ مدل اقیانوس ۵۰۰ میلی‌لیتر", "category": "شوینده", "description": "شیشه پاک‌کن تاژ مدل اقیانوس با حجم ۵۰۰ میلی‌لیتر، مناسب پاک کردن شیشه، آینه و سطوح شیشه‌ای و کمک به از بین بردن لکه‌ها و آلودگی‌ها.", "image": "./products/027.jpeg" }, { "id": 34, "name": "پاک کننده آشپزخانه اکتیو", "category": "شوینده", "description": "پاک‌کننده آشپزخانه اکتیو با قدرت پاک‌کنندگی بالا، مناسب از بین بردن چربی‌ها، لکه‌ها و مواد غذایی سوخته. با استفاده آسان، ایجاد درخشندگی بالا و رایحه‌ای خوش، مناسب نظافت سطوح مختلف آشپزخانه.", "image": "./products/030.jpeg" }, { "id": 35, "name": "پاک‌کننده چندمنظوره اکتیو", "category": "شوینده", "description": "پاک‌کننده چندمنظوره اکتیو با قدرت بالا برای پاک کردن چربی، لکه‌های عمیق و دوده از سطوح سخت پلاستیکی، سرامیکی، استیل، فلزی، چوبی و سنگی. مناسب برای تمیز کردن اجاق گاز، مایکروویو، یخچال، کابینت، سینک، هود و سایر سطوح قابل شست‌وشو. پس از استفاده، سطح را تمیز، درخشان و معطر می‌کند. از استفاده روی آینه، شیشه و مانیتور کامپیوتر خودداری شود.", "image": "./products/020.jpeg" }, { "id": 36, "name": "مانتی یا پاستای ترکیه‌ای", "category": "مواد غذایی", "description": "مانتی یا پاستای ترکیه‌ای، خمیرهای کوچک پرشده با گوشت یا سویا که مانند پاستا در آب جوش پخته می‌شوند. این غذای محبوب ترکیه معمولاً همراه با ماست، سیر و فلفل سرو می‌شود.", "image": "./products/037.jpeg" }, { "id": 37, "name": "بلغور دانه درشت", "category": "مواد غذایی", "description": "بلغور دانه درشت مناسب برای تهیه انواع غذاها از جمله پلوی بلغور، سوپ و آش.", "image": "./products/39.jpeg" }, { "id": 38, "name": "بلغور دانه متوسط", "category": "مواد غذایی", "description": "بلغور دانه متوسط مناسب برای تهیه انواع سوپ، آش، حلیم و پلوی بلغور.", "image": "./products/038.jpeg" }, { "id": 39, "name": "اسپری دئودورانت زنانه رکسونا Aloe Vera Scent", "category": "بهداشتی", "description": "اسپری دئودورانت زنانه رکسونا مدل Aloe Vera Scent با حجم ۲۰۰ میلی‌لیتر، ساخت ایتالیا و با عملکرد ۴۸ ساعته. دارای رایحه خنک و ملایم، مقاوم در برابر رطوبت و مناسب پوست‌های حساس. فاقد الکل و مواد حساسیت‌زا.", "image": "./products/032.jpeg" }, { "id": 40, "name": "پک مام قارچی و اسپری بدن داو اورجینال", "category": "بهداشتی", "description": "پک مام قارچی و اسپری بدن داو اورجینال با ماندگاری تا ۷۲ ساعت، مناسب استفاده روزانه برای کمک به کنترل تعریق و ایجاد حس تازگی و خوشبویی در طول روز.", "image": "./products/041.jpeg" }, { "id": 41, "name": "اسپری خوشبو کننده داو ۲۵۰ میل", "category": "بهداشتی", "description": "اسپری خوشبو کننده داو با حجم ۲۵۰ میلی‌لیتر و ماندگاری تا ۷۲ ساعت، مناسب استفاده روزانه برای ایجاد حس تازگی، تمیزی و رایحه‌ای دلپذیر در طول روز.", "image": "./products/042.jpeg" }, { "id": 42, "name": "دستمال نظافت مخصوص تی فیری با رایحه لیمو", "category": "شوینده", "description": "دستمال نظافت مخصوص تی فیری با رایحه لیمو، بسته ۵۰ عددی، مناسب برای نظافت و تمیز کردن سطوح مختلف. دارای رایحه دلپذیر لیمو و مناسب استفاده روزمره در منزل.", "image": "./products/043.jpeg" }, { "id": 43, "name": "دستمال مرطوب پاک کننده سطوح فیری", "category": "شوینده", "description": "دستمال مرطوب پاک‌کننده سطوح فیری در بسته ۵۰ عددی، مناسب برای تمیز کردن سطوح مختلف، آشپزخانه، مبلمان و وسایل چوبی. با ماندگاری ۴۸ ساعته و مناسب استفاده روزمره برای پاکیزگی و تازگی بیشتر سطوح.", "image": "./products/044.jpeg" }, { "id": 44, "name": "اسپری آسپروکس پاک کننده رسوب شیرآلات و سرامیک ۱۰۰۰ میل", "category": "شوینده", "description": "اسپری پاک‌کننده آسپروکس ASPEROX MAVI GUC با حجم ۱۰۰۰ میلی‌لیتر، مناسب برای از بین بردن رسوبات و لکه‌های ناشی از آب از روی شیرآلات، سرامیک و سطوح قابل شست‌وشو. مناسب استفاده برای نظافت روزمره و ایجاد سطحی تمیز و درخشان.", "image": "./products/045.jpeg" }, { "id": 45, "name": "استیک ضد تعریق الد اسپایس Old Spice", "category": "بهداشتی", "description": "استیک ضد تعریق Old Spice با ماندگاری طولانی، مناسب استفاده روزانه برای کمک به کنترل تعریق و ایجاد حس تازگی و خوشبویی در طول روز. مناسب آقایان و قابل استفاده برای محافظت و طراوت بیشتر.", "image": "./products/046.jpeg" }, { "id": 46, "name": "مام صابونی ضد تعریق رکسونا ۴۰ گرم", "category": "بهداشتی", "description": "مام صابونی ضد تعریق رکسونا با حجم ۴۰ گرم و ماندگاری تا ۴۸ ساعت، مناسب استفاده روزانه برای کمک به کنترل تعریق و ایجاد حس تازگی و محافظت در طول روز.", "image": "./products/047.jpeg" }, { "id": 47, "name": "پک اسپری دئودورانت و مام رولی نیوا", "category": "بهداشتی", "description": "پک اسپری دئودورانت و مام رولی نیوا، مناسب استفاده روزانه برای کمک به کنترل تعریق و ایجاد حس تازگی و خوشبویی در طول روز. ترکیب اسپری دئودورانت و مام رولی، مناسب استفاده برای محافظت و طراوت بیشتر.", "image": "./products/048.jpeg" }, { "id": 48, "name": "پک دئودورانت اسپری و مام رولی نیوا ضد لک", "category": "بهداشتی", "description": "پک دئودورانت نیوا شامل اسپری و مام رولی با فرمول ضد لک، مناسب استفاده روزانه و طراحی‌شده برای کمک به محافظت در برابر تعریق و ایجاد حس تازگی و خوشبویی. مناسب استفاده برای لباس‌های سفید و مشکی و کمک به جلوگیری از ایجاد لکه و آثار سفید روی لباس.", "image": "./products/049.jpeg" }, { "id": 49, "name": "شامپو الیدور ۴۰۰ میلی‌لیتر", "category": "بهداشتی", "description": "شامپو الیدور با حجم ۴۰۰ میلی‌لیتر، حاوی مواد مغذی و مناسب انواع مو. این شامپو با کمک به تقویت ریشه و ساقه مو، برای مراقبت و حفظ سلامت و شادابی موها در استفاده روزانه مناسب است.", "image": "./products/050.jpeg" }, { "id": 50, "name": "شامپو ضد شوره کلییر سری قهرمانان مدل Deep Clean And Grease Control", "category": "بهداشتی", "description": "شامپو ضد شوره سر کلییر سری قهرمانان مدل Deep Clean And Grease Control با حجم ۴۰۰ میلی‌لیتر، مناسب موهای چرب. فرمول این شامپو برای پاکسازی عمیق مو و پوست سر و کمک به کنترل چربی و شوره طراحی شده و برای استفاده روزانه مناسب است.", "image": "./products/051.jpeg" }, { "id": 51, "name": "شامپو ضد شوره کلییر با زغال تصفیه شده ۴۰۰ میل", "category": "بهداشتی", "description": "شامپو ضد شوره کلییر با زغال تصفیه شده و حجم ۴۰۰ میلی‌لیتر، مناسب برای پاکسازی مو و پوست سر و کمک به کنترل شوره. ترکیب حاوی زغال به پاکسازی و ایجاد حس تازگی و تمیزی بیشتر موها کمک می‌کند.", "image": "./products/052.jpeg" }, { "id": 52, "name": "شامپو ضد شوره مردانه کلییر مدل Cool Sport Menthol ۳۵۰ میلی‌لیتر", "category": "بهداشتی", "description": "شامپو ضد شوره مردانه کلییر مدل Cool Sport Menthol با حجم ۳۵۰ میلی‌لیتر، حاوی منتول با خاصیت خنک‌کنندگی و طراوت‌بخشی. مناسب برای پاکسازی مو و پوست سر و کمک به کنترل شوره، همراه با ایجاد حس خنکی و تازگی پس از شست‌وشو.", "image": "./products/053.jpeg" }, { "id": 53, "name": "شامپو تقویت‌کننده و ضد ریزش مو لایتنس مدل Argan Oil ۹۰۰ میلی‌لیتر", "category": "بهداشتی", "description": "شامپو تقویت‌کننده و ضد ریزش مو لایتنس مدل Argan Oil با حجم ۹۰۰ میلی‌لیتر، حاوی روغن آرگان و پروتئین و مناسب انواع مو. دارای خاصیت نرم‌کنندگی و حجم‌دهندگی و فاقد سولفات و پارابن، مناسب استفاده روزانه برای مراقبت و تقویت مو.", "image": "./products/054.jpeg" }, { "id": 54, "name": "شامپو لورآل", "category": "بهداشتی", "description": "شامپو لورآل با فرمول مغذی، به آبرسانی مو بدون ایجاد سنگینی کمک می‌کند. این شامپو دارای خواص ضد شوره بوده و برای کمک به پاکیزگی و حفظ سلامت پوست سر مناسب است.", "image": "./products/055.jpeg" }, { "id": 55, "name": "شامپو سر حاجی شاکر ۵۰۰ میل", "category": "بهداشتی", "description": "شامپو سر حاجی شاکر در انواع مدل‌ها با حجم ۵۰۰ میلی‌لیتر، مناسب برای پاکسازی، تقویت و آبرسانی مو. هر مدل با توجه به عصاره انتخابی، برای نیازها و انواع مختلف مو طراحی شده و به مراقبت و حفظ سلامت موها کمک می‌کند.", "image": "./products/056.jpeg" }, { "id": 56, "name": "کرم مرطوب کننده دالان حاوی روغن زیتون ۳۰۰ میلی‌لیتر", "category": "بهداشتی", "description": "کرم مرطوب‌کننده دالان حاوی روغن زیتون با حجم ۳۰۰ میلی‌لیتر، مناسب انواع پوست و قابل استفاده برای صورت و بدن. مناسب برای کمک به حفظ رطوبت و نرمی پوست و استفاده روزانه.", "image": "./products/057.jpeg" }, { "id": 57, "name": "اسپری خوشبو کننده بدن زنانه ایموشن ۱۵۰ میلی‌لیتر", "category": "بهداشتی", "description": "اسپری خوشبو کننده بدن زنانه ایموشن با حجم ۱۵۰ میلی‌لیتر و ماندگاری تا ۴۸ ساعت، مناسب استفاده روزانه برای ایجاد حس تازگی و خوشبویی و کمک به حفظ رایحه‌ای دلپذیر در طول روز.", "image": "./products/058.jpeg" }, { "id": 58, "name": "کرم مرطوب کننده آرکو کلاسیک کاسه‌ای ۲۵۰ میل", "category": "بهداشتی", "description": "کرم مرطوب‌کننده آرکو کلاسیک با حجم ۲۵۰ میلی‌لیتر و بسته‌بندی کاسه‌ای، مناسب انواع پوست. مناسب استفاده روزانه برای کمک به حفظ رطوبت، نرمی و لطافت پوست.", "image": "./products/059.jpeg" }, { "id": 59, "name": "صابون دورو Duru رنگی و خوشبوکننده", "category": "بهداشتی", "description": "صابون‌های رنگی و خوشبوکننده برند دورو Duru، ساخت کشور ترکیه، با رایحه‌های متنوع مانند گل‌های بهاری، نسیم اقیانوس و عصاره‌های گیاهی. مناسب استفاده روزانه و برای ایجاد حس پاکیزگی و رایحه‌ای دلپذیر روی پوست.", "image": "./products/060.jpeg" }, { "id": 60, "name": "قرص ماشین ظرفشویی اسپروکس مدل Sparx Diamond بسته ۶۰ عددی", "category": "شوینده", "description": "قرص ماشین ظرفشویی اسپروکس مدل Sparx Diamond در بسته ۶۰ عددی، مناسب شست‌وشوی ظروف و کمک به از بین بردن چربی، لکه و باقی‌مانده مواد غذایی. مناسب استفاده در ماشین‌های ظرفشویی برای شست‌وشوی مؤثر و ایجاد ظروف تمیز و درخشان.", "image": "./products/061.jpeg" }, { "id": 61, "name": "قرص ماشین ظرفشویی فیری مدل پلاتینیوم پلاس بسته ۵۰ عددی", "category": "شوینده", "description": "قرص ماشین ظرفشویی فیری مدل پلاتینیوم پلاس در بسته ۵۰ عددی، مناسب شست‌وشوی ظروف و کمک به از بین بردن چربی، لکه و باقی‌مانده مواد غذایی. مناسب استفاده در ماشین ظرفشویی برای شست‌وشوی مؤثر و ایجاد ظروف تمیز و براق.", "image": "./products/062.jpeg" }, { "id": 62, "name": "قرص ماشین ظرفشویی فیری مدل پلاتینیوم بسته ۷۲ عددی", "category": "شوینده", "description": "قرص ماشین ظرفشویی فیری مدل پلاتینیوم در بسته ۷۲ عددی، مناسب شست‌وشوی ظروف و کمک به از بین بردن چربی، لکه و باقی‌مانده مواد غذایی. مناسب استفاده در ماشین ظرفشویی برای شست‌وشوی مؤثر و کمک به درخشندگی ظروف.", "image": "./products/063.jpeg" }, { "id": 63, "name": "قرص ماشین ظرفشویی فینیش مدل کوانتوم INFINITY SHINE بسته ۸۳ عددی", "category": "شوینده", "description": "قرص ماشین ظرفشویی فینیش مدل کوانتوم INFINITY SHINE در بسته ۸۳ عددی، مناسب شست‌وشوی ظروف و کمک به از بین بردن چربی، لکه و باقی‌مانده مواد غذایی. مناسب استفاده در ماشین ظرفشویی برای شست‌وشوی مؤثر و ایجاد ظروف تمیز و درخشان.", "image": "./products/064.jpeg" }];
+        const info = {
+            "بهداشتی": { title: "محصولات بهداشتی", desc: "محصولات بهداشتی و مراقبت شخصی" },
+            "شوینده": { title: "شوینده‌ها", desc: "انواع شوینده و محصولات نظافتی" },
+            "نوشیدنی": { title: "نوشیدنی‌ها", desc: "انواع نوشیدنی و آب آشامیدنی" },
+            "مواد غذایی": { title: "مواد غذایی", desc: "انواع مواد غذایی و خوراکی" }
+        };
+        const order = ["همه", "بهداشتی", "شوینده", "نوشیدنی", "مواد غذایی"];
+        let active = "همه", q = "";
+        const content = document.getElementById("content"), chips = document.getElementById("chips"), search = document.getElementById("search"), modal = document.getElementById("modal");
+        document.getElementById("total").textContent = products.length;
+        function esc(s) { return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[c])) }
+        function chipRender() { chips.innerHTML = order.map(c => `<button class="chip ${c === active ? "active" : ""}" data-c="${c}">${c === "همه" ? "همه محصولات" : info[c].title}</button>`).join(""); chips.querySelectorAll("button").forEach(b => b.onclick = () => { active = b.dataset.c; render() }) }
+        function card(p) { return `<article class="card" data-id="${p.id}"><div class="photo"><img src="${p.image}" alt="${esc(p.name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="fallback">تصویر محصول در دسترس نیست</div></div><div class="body"><div class="title">${esc(p.name)}</div><div class="desc">${esc(p.description)}</div><div class="more">مشاهده جزئیات ←</div></div></article>` }
+        function render() {
+            chipRender();
+            const qq = q.trim().toLocaleLowerCase("fa");
+            const filtered = products.filter(p => (active === "همه" || p.category === active) && (!qq || (p.name + " " + p.description).toLocaleLowerCase("fa").includes(qq)));
+            if (!filtered.length) { content.innerHTML = '<div class="empty">محصولی مطابق جستجو یا دسته‌بندی انتخاب‌شده پیدا نشد.</div>'; return }
+            if (active !== "همه" || qq) {
+                content.innerHTML = `<section class="category"><div class="chead"><div><h2>${active === "همه" ? "نتایج جستجو" : info[active].title}</h2><p>${qq ? "نتایج مطابق عبارت جستجو" : info[active].desc}</p></div><span class="count">${filtered.length} محصول</span></div><div class="grid">${filtered.map(card).join("")}</div></section>`;
+            } else {
+                content.innerHTML = order.slice(1).map(c => { const a = products.filter(p => p.category === c); return `<section class="category"><div class="chead"><div><h2>${info[c].title}</h2><p>${info[c].desc}</p></div><span class="count">${a.length} محصول</span></div><div class="grid">${a.map(card).join("")}</div></section>` }).join("");
+            }
+            content.querySelectorAll(".card").forEach(el => el.onclick = () => openProduct(+el.dataset.id));
+        }
+        function openProduct(id) { const p = products.find(x => x.id === id); if (!p) return; document.getElementById("mtitle").textContent = p.name; document.getElementById("mdesc").textContent = p.description; const i = document.getElementById("mimage"); i.src = p.image; i.alt = p.name; modal.classList.add("show"); document.body.style.overflow = "hidden" }
+        function closeModal() { modal.classList.remove("show"); document.body.style.overflow = "" }
+        document.getElementById("close").onclick = closeModal; modal.onclick = e => { if (e.target === modal) closeModal() }; document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal() });
+        search.oninput = e => { q = e.target.value; render() }; render();
+    </script>
+</body>
+
+</html>
