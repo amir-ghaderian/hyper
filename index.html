@@ -323,58 +323,6 @@
             }
         }
 
-        /* ================= تایمر شروع فروش ================= */
-        .countdown {
-            margin-top: 12px;
-            background: #fff;
-            border: 1px solid var(--line);
-            border-radius: 22px;
-            padding: 16px;
-            text-align: center;
-            box-shadow: 0 10px 35px rgba(16, 70, 45, .06)
-        }
-
-        .cd-title {
-            font-size: 13px;
-            font-weight: 900;
-            color: #052e24
-        }
-
-        .cd-row {
-            direction: ltr;
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 8px;
-            max-width: 440px;
-            margin: 12px auto 0
-        }
-
-        .cd-box {
-            background: var(--g);
-            color: #fff;
-            border-radius: 16px;
-            padding: 11px 4px
-        }
-
-        .cd-box b {
-            display: block;
-            font-size: 26px;
-            line-height: 1.3;
-            font-variant-numeric: tabular-nums
-        }
-
-        .cd-box span {
-            font-size: 10px;
-            color: #a7f3d0
-        }
-
-        .cd-done {
-            margin-top: 10px;
-            font-size: 15px;
-            font-weight: 900;
-            color: var(--g2)
-        }
-
         .mini {
             display: flex;
             gap: 8px;
@@ -674,10 +622,6 @@
             .arrow {
                 display: block
             }
-
-            .cd-box b {
-                font-size: 34px
-            }
         }
 
         @media(max-width:560px) {
@@ -745,17 +689,6 @@
             <button class="arrow next" id="next" aria-label="بنر بعدی">‹</button>
             <div class="dots" id="dots"></div>
             <div class="progress" id="bar"></div>
-        </div>
-
-        <div class="countdown">
-            <div class="cd-title">⏳ زمان باقی‌مانده تا شروع فروش</div>
-            <div class="cd-row" id="cdRow">
-                <div class="cd-box"><b id="cd-d">۰۰</b><span>روز</span></div>
-                <div class="cd-box"><b id="cd-h">۰۰</b><span>ساعت</span></div>
-                <div class="cd-box"><b id="cd-m">۰۰</b><span>دقیقه</span></div>
-                <div class="cd-box"><b id="cd-s">۰۰</b><span>ثانیه</span></div>
-            </div>
-            <div class="cd-done" id="cdDone" hidden>🎉 فروش هایپر سعید شروع شد!</div>
         </div>
 
         <div class="mini">
@@ -937,36 +870,6 @@
 
             go(0);
             play();
-        })();
-
-        /* ================= تایمر شروع فروش ================= */
-        (function () {
-            // تاریخ شروع فروش (به وقت جهانی UTC). برای تغییر، فقط همین خط رو عوض کن.
-            // الان روی ۵ روز و ۱۲ ساعت بعد از زمان نوشتن این کد تنظیم شده.
-            const LAUNCH = new Date("2026-09-26T22:00:00Z").getTime();
-
-            const fa = n => String(n).replace(/\d/g, d => "۰۱۲۳۴۵۶۷۸۹"[d]);
-            const two = n => fa(String(n).padStart(2, "0"));
-            const $ = id => document.getElementById(id);
-            let t;
-
-            function tick() {
-                const left = Math.max(0, LAUNCH - Date.now());
-                const s = Math.floor(left / 1000);
-                $("cd-d").textContent = two(Math.floor(s / 86400));
-                $("cd-h").textContent = two(Math.floor((s % 86400) / 3600));
-                $("cd-m").textContent = two(Math.floor((s % 3600) / 60));
-                $("cd-s").textContent = two(s % 60);
-                if (left === 0) {
-                    $("cdRow").hidden = true;
-                    $("cdDone").hidden = false;
-                    document.querySelector(".cd-title").hidden = true;
-                    clearInterval(t);
-                }
-            }
-
-            tick();
-            t = setInterval(tick, 1000);
         })();
     </script>
 </body>
