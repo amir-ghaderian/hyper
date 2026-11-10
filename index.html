@@ -476,18 +476,23 @@
         }
 
         .photo {
-            aspect-ratio: 1;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            height: auto;
             background: #f5f7f6;
-            display: grid;
-            place-items: center;
-            overflow: hidden
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 10px;
         }
 
         .photo img {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            display: block
+            object-position: center center;
+            display: block;
         }
 
         .fallback {
@@ -521,7 +526,32 @@
             overflow: hidden
         }
 
-        .price-line{margin-top:8px;display:flex;justify-content:space-between;gap:6px;font-size:10px;font-weight:900}.price-line b{color:#047857}.stock-badge{padding:3px 7px;border-radius:999px;background:#ecfdf5;color:#047857;font-size:9px}.stock-badge.out{background:#fff1f2;color:#be123c}
+        .price-line {
+            margin-top: 8px;
+            display: flex;
+            justify-content: space-between;
+            gap: 6px;
+            font-size: 10px;
+            font-weight: 900
+        }
+
+        .price-line b {
+            color: #047857
+        }
+
+        .stock-badge {
+            padding: 3px 7px;
+            border-radius: 999px;
+            background: #ecfdf5;
+            color: #047857;
+            font-size: 9px
+        }
+
+        .stock-badge.out {
+            background: #fff1f2;
+            color: #be123c
+        }
+
         .more {
             margin-top: 8px;
             color: var(--g2);
@@ -766,18 +796,74 @@
         function esc(s) { return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[c])) }
         function chipRender() { chips.innerHTML = order.map(c => `<button class="chip ${c === active ? "active" : ""}" data-c="${c}">${c === "همه" ? "همه محصولات" : info[c].title}</button>`).join(""); chips.querySelectorAll("button").forEach(b => b.onclick = () => { active = b.dataset.c; render() }) }
         function card(p) { return `<article class="card" data-id="${p.id}"><div class="photo"><img src="${p.image}" alt="${esc(p.name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="fallback">تصویر محصول در دسترس نیست</div></div><div class="body"><div class="title">${esc(p.name)}</div><div class="desc">${esc(p.description)}</div><div class="price-line">${p.price !== null && p.price !== "" ? `<b>${esc(Number(p.price).toLocaleString("fa-IR"))} تومان</b>` : "<span></span>"}<span class="stock-badge ${p.inStock === false ? "out" : ""}">${p.inStock === false ? "ناموجود" : "موجود"}</span></div><div class="more">مشاهده جزئیات ←</div></div></article>` }
+
         function render() {
             chipRender();
+
             const qq = q.trim().toLocaleLowerCase("fa");
-            const filtered = products.filter(p => (active === "همه" || p.category === active) && (!qq || (p.name + " " + p.description).toLocaleLowerCase("fa").includes(qq)));
-            if (!filtered.length) { content.innerHTML = '<div class="empty">محصولی مطابق جستجو یا دسته‌بندی انتخاب‌شده پیدا نشد.</div>'; return }
-            if (active !== "همه" || qq) {
-                content.innerHTML = `<section class="category"><div class="chead"><div><h2>${active === "همه" ? "نتایج جستجو" : info[active].title}</h2><p>${qq ? "نتایج مطابق عبارت جستجو" : info[active].desc}</p></div><span class="count">${filtered.length} محصول</span></div><div class="grid">${filtered.map(card).join("")}</div></section>`;
-            } else {
-                content.innerHTML = order.slice(1).map(c => { const a = products.filter(p => p.category === c); return `<section class="category"><div class="chead"><div><h2>${info[c].title}</h2><p>${info[c].desc}</p></div><span class="count">${a.length} محصول</span></div><div class="grid">${a.map(card).join("")}</div></section>` }).join("");
+
+            // مرتب‌سازی فارسی محصولات بر اساس نام
+            const sortProducts = items => [...items].sort((a, b) =>
+                a.name.localeCompare(b.name, "fa", {
+                    sensitivity: "base",
+                    numeric: true
+                })
+            );
+
+            const filtered = sortProducts(
+                products.filter(p =>
+                    (active === "همه" || p.category === active) &&
+                    (!qq || (p.name + " " + p.description)
+                        .toLocaleLowerCase("fa")
+                        .includes(qq))
+                )
+            );
+
+            if (!filtered.length) {
+                content.innerHTML =
+                    '<div class="empty">محصولی مطابق جستجو یا دسته‌بندی انتخاب‌شده پیدا نشد.</div>';
+                return;
             }
-            content.querySelectorAll(".card").forEach(el => el.onclick = () => openProduct(+el.dataset.id));
+
+            if (active !== "همه" || qq) {
+                content.innerHTML = `
+            <section class="category">
+                <div class="chead">
+                    <div>
+                        <h2>${active === "همه" ? "نتایج جستجو" : info[active].title}</h2>
+                        <p>${qq ? "نتایج مطابق عبارت جستجو" : info[active].desc}</p>
+                    </div>
+                    <span class="count">${filtered.length} محصول</span>
+                </div>
+                <div class="grid">${filtered.map(card).join("")}</div>
+            </section>
+        `;
+            } else {
+                content.innerHTML = order.slice(1).map(c => {
+                    const a = sortProducts(
+                        products.filter(p => p.category === c)
+                    );
+
+                    return `
+                <section class="category">
+                    <div class="chead">
+                        <div>
+                            <h2>${info[c].title}</h2>
+                            <p>${info[c].desc}</p>
+                        </div>
+                        <span class="count">${a.length} محصول</span>
+                    </div>
+                    <div class="grid">${a.map(card).join("")}</div>
+                </section>
+            `;
+                }).join("");
+            }
+
+            content.querySelectorAll(".card").forEach(el =>
+                el.onclick = () => openProduct(+el.dataset.id)
+            );
         }
+
         function openProduct(id) { const p = products.find(x => x.id === id); if (!p) return; document.getElementById("mtitle").textContent = p.name; document.getElementById("mdesc").textContent = p.description; const i = document.getElementById("mimage"); i.src = p.image; i.alt = p.name; modal.classList.add("show"); document.body.style.overflow = "hidden" }
         function closeModal() { modal.classList.remove("show"); document.body.style.overflow = "" }
         document.getElementById("close").onclick = closeModal; modal.onclick = e => { if (e.target === modal) closeModal() }; document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal() });
