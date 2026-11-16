@@ -2459,7 +2459,7 @@
   {
     "id": 286,
     "name": "نوشیدنی انرژی زا زمزم انرجی",
-    "category": "بهداشتی",
+    "category": "نوشیدنی",
     "description": "نوشابه انرژی زا اورجینال زمزم - 250 میلی لیتر-باکس 12عددی",
     "image": "./products/42bb399c-2585-4123-82c6-2bbfa61f0514.jpg",
     "price": 1080000,
@@ -2468,10 +2468,19 @@
   {
     "id": 287,
     "name": "آب آشامیدنی دسانی کوکاکولا 500 میلی‌لیتری بسته 12 عددی",
-    "category": "بهداشتی",
+    "category": "نوشیدنی",
     "description": "",
     "image": "./products/e3bfe562-b96a-4369-a07b-9754f571b2f9.jpg",
     "price": 250000,
+    "inStock": true
+  },
+  {
+    "id": 288,
+    "name": "آب معدنی زمزم ۵۰۰ میلی‌لیتر گریسون- بسته 12 عددی",
+    "category": "نوشیدنی",
+    "description": "",
+    "image": "./products/c8ad6808-61d0-4746-bcad-629dcbd041c6.jpg",
+    "price": 220000,
     "inStock": true
   }
 ]
