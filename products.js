@@ -307,7 +307,7 @@ window.HYPER_PRODUCTS = [
   },
   {
     "id": 40,
-    "name": "پک مام قارچی و اسپ��ی بدن داو اورجین��ل",
+    "name": "پک مام قارچی و اسپ��ی بدن داو اورجین������ل",
     "category": "بهداشتی",
     "description": "پک مام قارچی و اسپری بدن داو اورجینال با ماندگاری تا ۷۲ ساعت، مناسب استفاده روزانه برای کمک به کنترل تعریق و ایجاد حس تازگی و خوشبویی در طول روز.",
     "image": "./products/041.jpeg",
@@ -788,7 +788,7 @@ window.HYPER_PRODUCTS = [
     "category": "نوشیدنی",
     "description": "نوشیدنی هلو رانی پالپ‌دار با حجم ۲۴۰ میلی‌لیتر، در بسته ۲۴ عددی، با طعم دلپذیر هلو و پالپ میوه. مناسب مصرف روزانه، پذیرایی و میان‌وعده.",
     "image": "./products/096.jpeg",
-    "price": 65000,
+    "price": 80000,
     "inStock": true
   },
   {
@@ -1542,7 +1542,7 @@ window.HYPER_PRODUCTS = [
     "id": 182,
     "name": "شامپو مو هد اند شولدرز",
     "category": "بهداشتی",
-    "description": "شامپو مو هد اند شولدرز مدل MENTOL FERAHLIGI حجم ۳۰۰ میلی‌لیتر، ضد شوره، کاهش‌دهنده چربی، تقویت‌کننده و ترمیم‌کننده",
+    "description": "شامپو مو هد اند شولدرز مدل MENTOL FERAHLIGI حجم ۳۰۰ میلی‌لیتر، ضد شوره، کاهش‌دهنده ��رب��، تقویت‌کننده و ترمیم‌کننده",
     "image": "./products/e6f6dc07-97a7-4dbd-a4fa-76905857a462.jpg",
     "price": 1400000,
     "inStock": true
@@ -2481,6 +2481,15 @@ window.HYPER_PRODUCTS = [
     "description": "",
     "image": "./products/c8ad6808-61d0-4746-bcad-629dcbd041c6.jpg",
     "price": 220000,
+    "inStock": true
+  },
+  {
+    "id": 289,
+    "name": "نوشابه پرتقالی فانتا حجم 1.5 لیتری (بسته 6 عددی)",
+    "category": "نوشیدنی",
+    "description": "",
+    "image": "./products/86604bde-8e7c-4ad8-a1d3-fe965fd17417.webp",
+    "price": 590000,
     "inStock": true
   }
 ];
