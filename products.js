@@ -788,7 +788,16 @@ window.HYPER_PRODUCTS = [
     "category": "نوشیدنی",
     "description": "نوشیدنی هلو رانی پالپ‌دار با حجم ۲۴۰ میلی‌لیتر، در بسته ۲۴ عددی، با طعم دلپذیر هلو و پالپ میوه. مناسب مصرف روزانه، پذیرایی و میان‌وعده.",
     "image": "./products/096.jpeg",
-    "price": 65000,
+    "price": 80000,
+    "inStock": true
+  },
+  {
+    "id": 96,
+    "name": "ماءالشعیر شیشه‌ای ایستک استوایی بسته ۱۲ عددی",
+    "category": "نوشیدنی",
+    "description": "ماءالشعیر شیشه‌ای ایستک با طعم استوایی، در بسته ۱۲ عددی، با طعمی میوه‌ای و دلپذیر. مناسب مصرف روزانه، پذیرایی و همراهی با انواع غذاها.",
+    "image": "./products/097.jpeg",
+    "price": null,
     "inStock": true
   },
   {
@@ -2282,6 +2291,11 @@ window.HYPER_PRODUCTS = [
     "category": "بهداشتی",
     "description": "سایز بسیار بزرگ، لایه رویی همیشه خشک، جذب فوق العاده",
     "image": "./products/1527cd84-1fd4-4c09-a1df-5759e7564771.jpg",
+    "id": 238,
+    "name": "دستمال رومیزی",
+    "category": "بهداشتی",
+    "description": "دستمال رومیزی ۲ لایه تنو",
+    "image": "./products/344d76c1-a571-4836-8344-fe235cc32f8e.jpg",
     "price": 130000,
     "inStock": true
   },
@@ -2481,6 +2495,30 @@ window.HYPER_PRODUCTS = [
     "description": "",
     "image": "./products/c8ad6808-61d0-4746-bcad-629dcbd041c6.jpg",
     "price": 220000,
+    "id": 239,
+    "name": "دستمال توالت",
+    "category": "بهداشتی",
+    "description": "دستمال توالت۳ لایه ۸ رول تنو",
+    "image": "./products/320807e9-b9e6-4193-94be-6db4ba7adaba.jpg",
+    "price": 490000,
+    "inStock": true
+  },
+  {
+    "id": 240,
+    "name": "دستمال حوله ای",
+    "category": "بهداشتی",
+    "description": "دستمال حوله ای ۳ لایه ۴ رول تنو ۳۹۰",
+    "image": "./products/6f00e322-5a89-4714-a7d8-09a8f925c09e.jpg",
+    "price": null,
+    "inStock": true
+  },
+  {
+    "id": 241,
+    "name": "دستمال توالت",
+    "category": "بهداشتی",
+    "description": "دستمال توالت ۴ لایه ۲ رول فول تایم",
+    "image": "./products/204dc3cb-969d-4566-8771-b1d1665feddf.jpg",
+    "price": 1250000,
     "inStock": true
   }
 ];
