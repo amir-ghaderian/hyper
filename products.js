@@ -2277,12 +2277,7 @@ window.HYPER_PRODUCTS = [
     "inStock": true
   },
   {
-    "id": 266,
-    "name": "نوار بهداشتی مای لیدی مدل اولترا خیلی نازک همیشه خشک (XL)",
-    "category": "بهداشتی",
-    "description": "سایز بسیار بزرگ، لایه رویی همیشه خشک، جذب فوق العاده",
-    "image": "./products/1527cd84-1fd4-4c09-a1df-5759e7564771.jpg",
-    "id": 238,
+    "id": 291,
     "name": "دستمال رومیزی",
     "category": "بهداشتی",
     "description": "دستمال رومیزی ۲ لایه تنو",
@@ -2480,13 +2475,7 @@ window.HYPER_PRODUCTS = [
     "inStock": true
   },
   {
-    "id": 288,
-    "name": "آب معدنی زمزم ۵۰۰ میلی‌لیتر گریسون- بسته 12 عددی",
-    "category": "نوشیدنی",
-    "description": "",
-    "image": "./products/c8ad6808-61d0-4746-bcad-629dcbd041c6.jpg",
-    "price": 220000,
-    "id": 239,
+    "id": 292,
     "name": "دستمال توالت",
     "category": "بهداشتی",
     "description": "دستمال توالت۳ لایه ۸ رول تنو",
@@ -2495,7 +2484,7 @@ window.HYPER_PRODUCTS = [
     "inStock": true
   },
   {
-    "id": 240,
+    "id": 293,
     "name": "دستمال حوله ای",
     "category": "بهداشتی",
     "description": "دستمال حوله ای ۳ لایه ۴ رول تنو ۳۹۰",
@@ -2504,7 +2493,7 @@ window.HYPER_PRODUCTS = [
     "inStock": true
   },
   {
-    "id": 241,
+    "id": 294,
     "name": "دستمال توالت",
     "category": "بهداشتی",
     "description": "دستمال توالت ۴ لایه ۲ رول فول تایم",
