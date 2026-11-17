@@ -487,6 +487,44 @@
             color: #047857
         }
 
+        .card.sale {
+            border: 2px solid #dc2626;
+            box-shadow: 0 0 0 3px #fee2e2
+        }
+
+        .price-box {
+            display: flex;
+            flex-direction: column;
+            gap: 2px
+        }
+
+        .old-price {
+            color: #6b7280;
+            font-size: 10px;
+            text-decoration: line-through;
+            text-decoration-color: #dc2626;
+            text-decoration-thickness: 2px
+        }
+
+        .sale-badge {
+            padding: 3px 7px;
+            border-radius: 999px;
+            background: #dc2626;
+            color: #fff;
+            font-size: 9px
+        }
+
+        .mprice {
+            padding: 0 16px 8px;
+            font-weight: 900;
+            color: #047857
+        }
+
+        .mprice .old-price {
+            display: block;
+            font-size: 13px
+        }
+
         .stock-badge {
             padding: 3px 7px;
             border-radius: 999px;
@@ -709,13 +747,13 @@
                 <h3 id="mtitle"></h3><button class="close" id="close">×</button>
             </div>
             <div class="mphoto"><img id="mimage" alt=""></div>
+            <div class="mprice" id="mprice"></div>
             <div class="mdesc" id="mdesc"></div>
         </div>
     </div>
 
-    <script src="./products.js"></script>
     <script>
-        const products = window.HYPER_PRODUCTS;
+        let products = [];
         const info = {
             "بهداشتی": { title: "محصولات بهداشتی", desc: "محصولات بهداشتی و مراقبت شخصی" },
             "شوینده": { title: "شوینده‌ها", desc: "انواع شوینده و محصولات نظافتی" },
@@ -728,7 +766,7 @@
         document.getElementById("total").textContent = products.length;
         function esc(s) { return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[c])) }
         function chipRender() { chips.innerHTML = order.map(c => `<button class="chip ${c === active ? "active" : ""}" data-c="${c}">${c === "همه" ? "همه محصولات" : info[c].title}</button>`).join(""); chips.querySelectorAll("button").forEach(b => b.onclick = () => { active = b.dataset.c; render() }) }
-        function card(p) { return `<article class="card" data-id="${p.id}"><div class="photo"><img src="${p.image}" alt="${esc(p.name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="fallback">تصویر محصول در دسترس نیست</div></div><div class="body"><div class="title">${esc(p.name)}</div><div class="desc">${esc(p.description)}</div><div class="price-line">${p.price !== null && p.price !== "" ? `<b>${esc(Number(p.price).toLocaleString("fa-IR"))} تومان</b>` : "<span></span>"}<span class="stock-badge ${p.inStock === false ? "out" : ""}">${p.inStock === false ? "ناموجود" : "موجود"}</span></div><div class="more">مشاهده جزئیات ←</div></div></article>` }
+        function card(p) { return `<article class="card${p.oldPrice ? " sale" : ""}" data-id="${p.id}"><div class="photo"><img src="${p.image}" alt="${esc(p.name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="fallback">تصویر محصول در دسترس نیست</div></div><div class="body"><div class="title">${esc(p.name)}</div><div class="desc">${esc(p.description)}</div><div class="price-line">${p.price !== null && p.price !== "" ? (p.oldPrice ? `<div class="price-box"><span class="old-price">${esc(Number(p.oldPrice).toLocaleString("fa-IR"))} تومان</span><b>${esc(Number(p.price).toLocaleString("fa-IR"))} تومان</b></div>` : `<b>${esc(Number(p.price).toLocaleString("fa-IR"))} تومان</b>`) : "<span></span>"}${p.oldPrice ? `<span class="sale-badge">حراج</span>` : ""}<span class="stock-badge ${p.inStock === false ? "out" : ""}">${p.inStock === false ? "ناموجود" : "موجود"}</span></div><div class="more">مشاهده جزئیات ←</div></div></article>` }
 
         function render() {
             chipRender();
@@ -797,10 +835,23 @@
             );
         }
 
-        function openProduct(id) { const p = products.find(x => x.id === id); if (!p) return; document.getElementById("mtitle").textContent = p.name; document.getElementById("mdesc").textContent = p.description; const i = document.getElementById("mimage"); i.src = p.image; i.alt = p.name; modal.classList.add("show"); document.body.style.overflow = "hidden" }
+        function openProduct(id) { const p = products.find(x => x.id === id); if (!p) return; document.getElementById("mtitle").textContent = p.name; document.getElementById("mdesc").textContent = p.description; const i = document.getElementById("mimage"); i.src = p.image; i.alt = p.name; document.getElementById("mprice").innerHTML = p.price !== null && p.price !== "" ? (p.oldPrice ? `<span class="old-price">${esc(Number(p.oldPrice).toLocaleString("fa-IR"))} تومان</span>` : "") + esc(Number(p.price).toLocaleString("fa-IR")) + " تومان" : ""; modal.classList.add("show"); document.body.style.overflow = "hidden" }
         function closeModal() { modal.classList.remove("show"); document.body.style.overflow = "" }
         document.getElementById("close").onclick = closeModal; modal.onclick = e => { if (e.target === modal) closeModal() }; document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal() });
-        search.oninput = e => { q = e.target.value; render() }; render();
+        search.oninput = e => { q = e.target.value; render() };
+        async function loadProducts() {
+            try {
+                const r = await fetch("./products.json", { cache: "no-store" });
+                if (!r.ok) throw new Error(r.status);
+                products = await r.json();
+            } catch (e) {
+                content.innerHTML = '<p style="padding:24px;text-align:center">بارگذاری محصولات انجام نشد. صفحه را از طریق سرور (start-admin-windows.bat) یا آدرس سایت باز کنید.</p>';
+                return;
+            }
+            document.getElementById("total").textContent = products.length;
+            render();
+        }
+        loadProducts();
 
         /* ================= بنر خودکار ================= */
         (function () {
