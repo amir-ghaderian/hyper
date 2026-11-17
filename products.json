@@ -2277,15 +2277,6 @@
     "inStock": true
   },
   {
-    "id": 291,
-    "name": "دستمال رومیزی",
-    "category": "بهداشتی",
-    "description": "دستمال رومیزی ۲ لایه تنو",
-    "image": "./products/344d76c1-a571-4836-8344-fe235cc32f8e.jpg",
-    "price": 130000,
-    "inStock": true
-  },
-  {
     "id": 267,
     "name": "ماءالشعیر شیشه ای ایستک استوایی ۳۲۰ میلی‌لیتر بسته ۱۲ عددی",
     "category": "نوشیدنی",
@@ -2490,15 +2481,6 @@
     "description": "دستمال حوله ای ۳ لایه ۴ رول تنو ۳۹۰",
     "image": "./products/6f00e322-5a89-4714-a7d8-09a8f925c09e.jpg",
     "price": null,
-    "inStock": true
-  },
-  {
-    "id": 294,
-    "name": "دستمال توالت",
-    "category": "بهداشتی",
-    "description": "دستمال توالت ۴ لایه ۲ رول فول تایم",
-    "image": "./products/204dc3cb-969d-4566-8771-b1d1665feddf.jpg",
-    "price": 1250000,
     "inStock": true
   },
   {
