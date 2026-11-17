@@ -266,7 +266,7 @@
     "category": "شوینده",
     "description": "پاک‌کننده چندمنظوره اکتیو با قدرت بالا برای پاک کردن چربی، لکه‌های عمیق و دوده از سطوح سخت پلاستیکی، سرامیکی، استیل، فلزی، چوبی و سنگی. مناسب برای تمیز کردن اجاق گاز، مایکروویو، یخچال، کابینت، سینک، هود و سایر سطوح قابل شست‌وشو. پس از استفاده، سطح را تمیز، درخشان و معطر می‌کند. از استفاده روی آینه، شیشه و مانیتور کامپیوتر خودداری شود.",
     "image": "./products/020.jpeg",
-    "price": 190000,
+    "price": 230000,
     "inStock": true
   },
   {
@@ -307,7 +307,7 @@
   },
   {
     "id": 40,
-    "name": "پک مام قارچی و اسپ��ی بدن داو اورجین������������ل",
+    "name": "پک مام قارچی و اسپری بدن داو اورجینال",
     "category": "بهداشتی",
     "description": "پک مام قارچی و اسپری بدن داو اورجینال با ماندگاری تا ۷۲ ساعت، مناسب استفاده روزانه برای کمک به کنترل تعریق و ایجاد حس تازگی و خوشبویی در طول روز.",
     "image": "./products/041.jpeg",
@@ -833,7 +833,7 @@
     "category": "مواد غذایی",
     "description": "روغن سرخ‌کردنی بهار با حجم ۱.۸ لیتر، مناسب برای سرخ کردن انواع مواد غذایی و تهیه غذاهای روزمره. مناسب استفاده در آشپزی و پخت‌وپز روزانه.",
     "image": "./products/0102.jpeg",
-    "price": 720000,
+    "price": 810000,
     "inStock": true
   },
   {
@@ -2010,7 +2010,7 @@
     "id": 234,
     "name": "استیک ضد تعریق زنانه بدون آلومینیوم رکسونا",
     "category": "بهداشتی",
-    "description": "استیک ضد تعریق زنانه بدون آلومینیوم رکسون�� \nمدل Powder Dry \nحجم 40 میلی لیتر",
+    "description": "استیک ضد تعریق زنانه بدون آلومینیوم رکسونا \nمدل Powder Dry \nحجم 40 میلی لیتر",
     "image": "./products/37538838-41f5-4976-8964-358b57d7f934.jpg",
     "price": null,
     "inStock": true
@@ -2291,7 +2291,7 @@
     "category": "نوشیدنی",
     "description": "",
     "image": "./products/a6d9e773-b60c-41ea-a148-c792e3f67422.webp",
-    "price": 1080000,
+    "price": 1140000,
     "inStock": true
   },
   {
@@ -2300,7 +2300,7 @@
     "category": "نوشیدنی",
     "description": "",
     "image": "./products/15984fe1-9a9a-496b-9eb7-4efb8aebc927.webp",
-    "price": 1080000,
+    "price": 1140000,
     "inStock": true
   },
   {
@@ -2309,7 +2309,7 @@
     "category": "نوشیدنی",
     "description": "",
     "image": "./products/545ff682-e1f4-4a3f-af6e-d52fe7954a65.webp",
-    "price": 1080000,
+    "price": 1140000,
     "inStock": true
   },
   {
@@ -2318,7 +2318,7 @@
     "category": "نوشیدنی",
     "description": "",
     "image": "./products/88c8c3b9-e6b3-4f71-9b2f-aaac947538d2.jpg",
-    "price": 1080000,
+    "price": 1140000,
     "inStock": true
   },
   {
@@ -2327,7 +2327,7 @@
     "category": "نوشیدنی",
     "description": "",
     "image": "./products/de0bb3b1-0aa3-4591-950e-713d108e0c33.jpg",
-    "price": 1080000,
+    "price": 1140000,
     "inStock": true
   },
   {
@@ -2336,7 +2336,7 @@
     "category": "نوشیدنی",
     "description": "",
     "image": "./products/5971e15f-9e8c-4436-a5b4-7c7ff75cf17a.webp",
-    "price": 1080000,
+    "price": 1140000,
     "inStock": true
   },
   {
@@ -2390,7 +2390,7 @@
     "category": "نوشیدنی",
     "description": "",
     "image": "./products/d1eba937-4ea1-4c94-835f-7c65a1ac34b9.webp",
-    "price": 630000,
+    "price": 735000,
     "inStock": true
   },
   {
@@ -2399,7 +2399,7 @@
     "category": "نوشیدنی",
     "description": "",
     "image": "./products/32f37c82-d29d-4da4-be76-e49313972824.webp",
-    "price": 630000,
+    "price": 735000,
     "inStock": true
   },
   {
@@ -2408,7 +2408,7 @@
     "category": "نوشیدنی",
     "description": "",
     "image": "./products/5d8aa4a0-238b-46b1-92ca-bf9d43b4f34d.webp",
-    "price": 650000,
+    "price": 735000,
     "inStock": true
   },
   {
