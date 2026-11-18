@@ -487,9 +487,37 @@
             color: #047857
         }
 
+        /* چشمک‌زن ملایم کادر/نشان قرمز حراج (فقط عنصر قرمز، نه کل کارت) */
+        @keyframes saleBlink {
+
+            0%,
+            100% {
+                border-color: #dc2626;
+                box-shadow: 0 0 0 3px #fee2e2
+            }
+
+            50% {
+                border-color: #fca5a5;
+                box-shadow: 0 0 0 3px rgba(220, 38, 38, .12)
+            }
+        }
+
+        @keyframes badgeBlink {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: .35
+            }
+        }
+
         .card.sale {
             border: 2px solid #dc2626;
-            box-shadow: 0 0 0 3px #fee2e2
+            box-shadow: 0 0 0 3px #fee2e2;
+            animation: saleBlink 1.4s ease-in-out infinite
         }
 
         .price-box {
@@ -511,7 +539,8 @@
             border-radius: 999px;
             background: #dc2626;
             color: #fff;
-            font-size: 9px
+            font-size: 9px;
+            animation: badgeBlink 1.4s ease-in-out infinite
         }
 
         .mprice {
@@ -682,6 +711,11 @@
             .progress {
                 display: none
             }
+
+            .card.sale,
+            .card.sale .sale-badge {
+                animation: none
+            }
         }
     </style>
 </head>
@@ -760,13 +794,39 @@
             "نوشیدنی": { title: "نوشیدنی‌ها", desc: "انواع نوشیدنی و آب آشامیدنی" },
             "مواد غذایی": { title: "مواد غذایی", desc: "انواع مواد غذایی و خوراکی" }
         };
-        const order = ["همه", "بهداشتی", "شوینده", "نوشیدنی", "مواد غذایی"];
+        const order = ["همه", "حراج", "بهداشتی", "شوینده", "نوشیدنی", "مواد غذایی"];
+        const isSale = p => p.oldPrice !== undefined && p.oldPrice !== null && p.oldPrice !== "" && Number(p.oldPrice) > Number(p.price);
+        const saleLabel = c => c === "همه" ? "همه محصولات" : (c === "حراج" ? "🔥 حراج" : info[c].title);
         let active = "همه", q = "";
         const content = document.getElementById("content"), chips = document.getElementById("chips"), search = document.getElementById("search"), modal = document.getElementById("modal");
         document.getElementById("total").textContent = products.length;
         function esc(s) { return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[c])) }
-        function chipRender() { chips.innerHTML = order.map(c => `<button class="chip ${c === active ? "active" : ""}" data-c="${c}">${c === "همه" ? "همه محصولات" : info[c].title}</button>`).join(""); chips.querySelectorAll("button").forEach(b => b.onclick = () => { active = b.dataset.c; render() }) }
+        function chipRender() { chips.innerHTML = order.map(c => `<button class="chip ${c === active ? "active" : ""}" data-c="${c}">${saleLabel(c)}</button>`).join(""); chips.querySelectorAll("button").forEach(b => b.onclick = () => { active = b.dataset.c; render() }) }
         function card(p) { return `<article class="card${p.oldPrice ? " sale" : ""}" data-id="${p.id}"><div class="photo"><img src="${p.image}" alt="${esc(p.name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="fallback">تصویر محصول در دسترس نیست</div></div><div class="body"><div class="title">${esc(p.name)}</div><div class="desc">${esc(p.description)}</div><div class="price-line">${p.price !== null && p.price !== "" ? (p.oldPrice ? `<div class="price-box"><span class="old-price">${esc(Number(p.oldPrice).toLocaleString("fa-IR"))} تومان</span><b>${esc(Number(p.price).toLocaleString("fa-IR"))} تومان</b></div>` : `<b>${esc(Number(p.price).toLocaleString("fa-IR"))} تومان</b>`) : "<span></span>"}${p.oldPrice ? `<span class="sale-badge">حراج</span>` : ""}<span class="stock-badge ${p.inStock === false ? "out" : ""}">${p.inStock === false ? "ناموجود" : "موجود"}</span></div><div class="more">مشاهده جزئیات ←</div></div></article>` }
+
+        // اولویت حراج فقط در سطح «هر محصول» است (نه دسته‌بندی/زیرگروه):
+        // محصولات حراجی هر دسته به ابتدای همان دسته می‌روند و ترتیب نسبی
+        // (هم حراجی‌ها و هم عادی‌ها) حفظ می‌شود. حراجِ یک محصول هیچ اثری
+        // روی دسته‌ها یا محصولات دیگر ندارد.
+        function orderBySale(items) {
+            return [...items.filter(isSale), ...items.filter(p => !isSale(p))];
+        }
+
+        const categories = order.filter(c => c !== "همه" && c !== "حراج");
+
+        function section(title, desc, count, items) {
+            return `
+            <section class="category">
+                <div class="chead">
+                    <div>
+                        <h2>${title}</h2>
+                        <p>${desc}</p>
+                    </div>
+                    <span class="count">${count} محصول</span>
+                </div>
+                <div class="grid">${items.map(card).join("")}</div>
+            </section>`;
+        }
 
         function render() {
             chipRender();
@@ -781,58 +841,54 @@
                 })
             );
 
-            const filtered = sortProducts(
-                products.filter(p =>
-                    (active === "همه" || p.category === active) &&
-                    (!qq || (p.name + " " + p.description)
-                        .toLocaleLowerCase("fa")
-                        .includes(qq))
-                )
+            const matchQ = p => !qq || (p.name + " " + p.description)
+                .toLocaleLowerCase("fa")
+                .includes(qq);
+
+            const bindCards = () => content.querySelectorAll(".card").forEach(el =>
+                el.onclick = () => openProduct(+el.dataset.id)
             );
 
-            if (!filtered.length) {
-                content.innerHTML =
-                    '<div class="empty">محصولی مطابق جستجو یا دسته‌بندی انتخاب‌شده پیدا نشد.</div>';
+            // فیلتر حراج: تمام محصولات حراجیِ همه گروه‌ها و زیرگروه‌ها
+            if (active === "حراج") {
+                const saleItems = sortProducts(products.filter(p => isSale(p) && matchQ(p)));
+                if (!saleItems.length) {
+                    content.innerHTML = '<div class="empty">محصول حراجی پیدا نشد.</div>';
+                    return;
+                }
+                content.innerHTML = categories.map(c => {
+                    const a = orderBySale(saleItems.filter(p => p.category === c));
+                    return a.length ? section(info[c].title + " — حراج", info[c].desc, a.length, a) : "";
+                }).join("");
+                bindCards();
                 return;
             }
 
+            // یک دسته‌بندی مشخص یا نتایج جستجو
             if (active !== "همه" || qq) {
-                content.innerHTML = `
-            <section class="category">
-                <div class="chead">
-                    <div>
-                        <h2>${active === "همه" ? "نتایج جستجو" : info[active].title}</h2>
-                        <p>${qq ? "نتایج مطابق عبارت جستجو" : info[active].desc}</p>
-                    </div>
-                    <span class="count">${filtered.length} محصول</span>
-                </div>
-                <div class="grid">${filtered.map(card).join("")}</div>
-            </section>
-        `;
-            } else {
-                content.innerHTML = order.slice(1).map(c => {
-                    const a = sortProducts(
-                        products.filter(p => p.category === c)
-                    );
-
-                    return `
-                <section class="category">
-                    <div class="chead">
-                        <div>
-                            <h2>${info[c].title}</h2>
-                            <p>${info[c].desc}</p>
-                        </div>
-                        <span class="count">${a.length} محصول</span>
-                    </div>
-                    <div class="grid">${a.map(card).join("")}</div>
-                </section>
-            `;
-                }).join("");
+                const filtered = orderBySale(sortProducts(
+                    products.filter(p => (active === "همه" || p.category === active) && matchQ(p))
+                ));
+                if (!filtered.length) {
+                    content.innerHTML = '<div class="empty">محصولی مطابق جستجو یا دسته‌بندی انتخاب‌شده پیدا نشد.</div>';
+                    return;
+                }
+                content.innerHTML = section(
+                    active === "همه" ? "نتایج جستجو" : info[active].title,
+                    qq ? "نتایج مطابق عبارت جستجو" : info[active].desc,
+                    filtered.length,
+                    filtered
+                );
+                bindCards();
+                return;
             }
 
-            content.querySelectorAll(".card").forEach(el =>
-                el.onclick = () => openProduct(+el.dataset.id)
-            );
+            // نمای همه: هر بخش مستقل، با اولویت حراج در همان بخش
+            content.innerHTML = categories.map(c => {
+                const a = orderBySale(sortProducts(products.filter(p => p.category === c)));
+                return section(info[c].title, info[c].desc, a.length, a);
+            }).join("");
+            bindCards();
         }
 
         function openProduct(id) { const p = products.find(x => x.id === id); if (!p) return; document.getElementById("mtitle").textContent = p.name; document.getElementById("mdesc").textContent = p.description; const i = document.getElementById("mimage"); i.src = p.image; i.alt = p.name; document.getElementById("mprice").innerHTML = p.price !== null && p.price !== "" ? (p.oldPrice ? `<span class="old-price">${esc(Number(p.oldPrice).toLocaleString("fa-IR"))} تومان</span>` : "") + esc(Number(p.price).toLocaleString("fa-IR")) + " تومان" : ""; modal.classList.add("show"); document.body.style.overflow = "hidden" }
