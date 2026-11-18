@@ -140,7 +140,8 @@
     "category": "نوشیدنی",
     "description": "نوشابه پرتقالی فانتا در قوطی ۳۳۰ میلی‌لیتری، با طعم پرتقالی و گازدار، مناسب مصرف روزانه و پذیرایی.",
     "image": "./products/004.jpeg",
-    "price": 75000,
+    "price": 60000,
+    "oldPrice": 75000,
     "inStock": true
   },
   {
@@ -150,7 +151,7 @@
     "description": "نوشابه کوکاکولا در قوطی ۳۳۰ میلی‌لیتری، با طعم کلاسیک و گازدار، مناسب مصرف روزانه و پذیرایی.",
     "image": "./products/003.jpeg",
     "price": 60000,
-    "inStock": true
+    "inStock": false
   },
   {
     "id": 22,
@@ -392,7 +393,8 @@
     "category": "بهداشتی",
     "description": "شامپو الیدور با حجم ۴۰۰ میلی‌لیتر، حاوی مواد مغذی و مناسب انواع مو. این شامپو با کمک به تقویت ریشه و ساقه مو، برای مراقبت و حفظ سلامت و شادابی موها در استفاده روزانه مناسب است.",
     "image": "./products/050.jpeg",
-    "price": 990000,
+    "price": 799000,
+    "oldPrice": 990000,
     "inStock": true
   },
   {
@@ -401,7 +403,8 @@
     "category": "بهداشتی",
     "description": "شامپو ضد شوره سر کلییر سری قهرمانان مدل Deep Clean And Grease Control با حجم ۴۰۰ میلی‌لیتر، مناسب موهای چرب. فرمول این شامپو برای پاکسازی عمیق مو و پوست سر و کمک به کنترل چربی و شوره طراحی شده و برای استفاده روزانه مناسب است.",
     "image": "./products/051.jpeg",
-    "price": 1050000,
+    "price": 890000,
+    "oldPrice": 1050000,
     "inStock": true
   },
   {
@@ -410,7 +413,8 @@
     "category": "بهداشتی",
     "description": "شامپو ضد شوره کلییر با زغال تصفیه شده و حجم ۴۰۰ میلی‌لیتر، مناسب برای پاکسازی مو و پوست سر و کمک به کنترل شوره. ترکیب حاوی زغال به پاکسازی و ایجاد حس تازگی و تمیزی بیشتر موها کمک می‌کند.",
     "image": "./products/052.jpeg",
-    "price": 1050000,
+    "price": 890000,
+    "oldPrice": 1050000,
     "inStock": true
   },
   {
@@ -419,7 +423,8 @@
     "category": "بهداشتی",
     "description": "شامپو ضد شوره مردانه کلییر مدل Cool Sport Menthol با حجم ۳۵۰ میلی‌لیتر، حاوی منتول با خاصیت خنک‌کنندگی و طراوت‌بخشی. مناسب برای پاکسازی مو و پوست سر و کمک به کنترل شوره، همراه با ایجاد حس خنکی و تازگی پس از شست‌وشو.",
     "image": "./products/053.jpeg",
-    "price": 1050000,
+    "price": 890000,
+    "oldPrice": 1050000,
     "inStock": true
   },
   {
@@ -437,7 +442,8 @@
     "category": "بهداشتی",
     "description": "شامپو لورآل با فرمول مغذی، به آبرسانی مو بدون ایجاد سنگینی کمک می‌کند. این شامپو دارای خواص ضد شوره بوده و برای کمک به پاکیزگی و حفظ سلامت پوست سر مناسب است.",
     "image": "./products/055.jpeg",
-    "price": 1000000,
+    "price": 880000,
+    "oldPrice": 1000000,
     "inStock": true
   },
   {
@@ -554,7 +560,8 @@
     "category": "بهداشتی",
     "description": "شامپو ضد شوره مردانه کلییر مدل Maksimum Ferahlık با حجم ۳۵۰ میلی‌لیتر و رایحه لیمو، مناسب برای پاکسازی مو و پوست سر و کمک به کنترل شوره. با ایجاد حس تازگی و طراوت، مناسب استفاده روزانه آقایان.",
     "image": "./products/068.jpeg",
-    "price": 1050000,
+    "price": 890000,
+    "oldPrice": 1050000,
     "inStock": true
   },
   {
@@ -707,7 +714,7 @@
     "category": "نوشیدنی",
     "description": "نوشابه مشکی کولا نوستالژی زمزم با حجم ۲۵۰ میلی‌لیتر، در بسته ۱۲ عددی، با طعم کلاسیک کولا و گازدار. مناسب مصرف روزانه، پذیرایی و همراهی با انواع غذاها.",
     "image": "./products/087.jpeg",
-    "price": 480000,
+    "price": 730000,
     "inStock": true
   },
   {
@@ -716,16 +723,7 @@
     "category": "نوشیدنی",
     "description": "لیموناد گازدار زمزم با حجم ۲۸۰ میلی‌لیتر، در بسته ۱۲ عددی، با طعم لیموناد و گازدار. مناسب مصرف روزانه، پذیرایی و همراهی با انواع غذاها.",
     "image": "./products/089.jpeg",
-    "price": 480000,
-    "inStock": true
-  },
-  {
-    "id": 88,
-    "name": "لیموناد گازدار زمزم ۲۸۰ میلی‌لیتر",
-    "category": "نوشیدنی",
-    "description": "لیموناد گازدار زمزم با حجم ۲۸۰ میلی‌لیتر، با طعم لیموناد و گازدار، مناسب مصرف روزانه، پذیرایی و همراهی با انواع غذاها.",
-    "image": "./products/088.jpeg",
-    "price": 85000,
+    "price": 720000,
     "inStock": true
   },
   {
@@ -788,7 +786,8 @@
     "category": "نوشیدنی",
     "description": "نوشیدنی هلو رانی پالپ‌دار با حجم ۲۴۰ میلی‌لیتر، در بسته ۲۴ عددی، با طعم دلپذیر هلو و پالپ میوه. مناسب مصرف روزانه، پذیرایی و میان‌وعده.",
     "image": "./products/096.jpeg",
-    "price": 80000,
+    "price": 60000,
+    "oldPrice": 80000,
     "inStock": true
   },
   {
@@ -797,7 +796,8 @@
     "category": "نوشیدنی",
     "description": "نوشیدنی انرژی‌زا هایپ با حجم ۲۵۰ میلی‌لیتر، مناسب مصرف در زمان فعالیت و برای افزایش انرژی و رفع خستگی روزمره.",
     "image": "./products/098.jpeg",
-    "price": 800000,
+    "price": 60000,
+    "oldPrice": 80000,
     "inStock": true
   },
   {
@@ -892,7 +892,7 @@
   },
   {
     "id": 108,
-    "name": "قهوه فوری نسکافه کلاسیک ۲۰۰ گرم",
+    "name": "قهوه فوری نسکافه کلاسیک ۲۰۰ گر��",
     "category": "نوشیدنی",
     "description": "قهوه فوری نسکافه کلاسیک با وزن ۲۰۰ گرم، با عطر و طعم کلاسیک قهوه و مناسب تهیه سریع و آسان یک فنجان قهوه. مناسب مصرف روزانه در منزل، محل کار و پذیرایی.",
     "image": "./products/0109.jpeg",
@@ -905,7 +905,8 @@
     "category": "بهداشتی",
     "description": "دستمال کاغذی اقتصادی گلریز با ۲۰۰ برگ در هر بسته و بسته‌بندی ۱۰ عددی، مناسب استفاده روزمره در منزل، محل کار و پذیرایی.",
     "image": "./products/0110.jpeg",
-    "price": 710000,
+    "price": 699000,
+    "oldPrice": 710000,
     "inStock": true
   },
   {
@@ -923,7 +924,8 @@
     "category": "بهداشتی",
     "description": "دستمال توالت گلریز با رنگ سفید و بسته ۸ عددی، مناسب استفاده روزانه در منزل، محل کار و سرویس‌های بهداشتی. طراحی‌شده برای استفاده راحت و بهداشتی در مصرف روزمره.",
     "image": "./products/0112.jpeg",
-    "price": 420000,
+    "price": 490000,
+    "oldPrice": 528000,
     "inStock": true
   },
   {
@@ -932,7 +934,8 @@
     "category": "بهداشتی",
     "description": "دستمال توالت گلریز در بسته ۱۲ عددی، مناسب استفاده روزانه در منزل، محل کار و سرویس‌های بهداشتی. گزینه‌ای مناسب برای مصرف خانوادگی و روزمره.",
     "image": "./products/0113.jpeg",
-    "price": 720000,
+    "price": 699000,
+    "oldPrice": 720000,
     "inStock": true
   },
   {
@@ -1031,7 +1034,8 @@
     "category": "بهداشتی",
     "description": "دستمال کاغذی اقتصادی گلریز در بسته ۶ عددی، هر بسته شامل ۵۰۰ برگ، مناسب استفاده روزمره در منزل، محل کار و سایر محیط‌ها.",
     "image": "./products/0126.jpeg",
-    "price": 990000,
+    "price": 920000,
+    "oldPrice": 1080000,
     "inStock": true
   },
   {
@@ -1329,6 +1333,7 @@
     "description": "شامپو مو اکتیو مدل Fig Extract با حجم ۴۰۰ میلی‌لیتر و حاوی عصاره انجیر، مناسب موهای چرب و نازک، با کمک به تنظیم چربی پوست سر و کاهش التهاب و خارش و همچنین کمک به براق و حجیم شدن مو.",
     "image": "./products/0159.jpeg",
     "price": 190000,
+    "oldPrice": 208000,
     "inStock": true
   },
   {
@@ -1338,6 +1343,7 @@
     "description": "شامپو مو اکتیو مدل Orange Extract با حجم ۴۰۰ میلی‌لیتر، حاوی عصاره پرتقال و مناسب استفاده روزمره برای پاکیزگی، شادابی و مراقبت از مو.",
     "image": "./products/0160.jpeg",
     "price": 190000,
+    "oldPrice": 208000,
     "inStock": true
   },
   {
@@ -1346,7 +1352,8 @@
     "category": "نوشیدنی",
     "description": "کافی میکس رژیمی بدون شکر کلاسنو با وزن ۲۴۰ گرم، مناسب تهیه یک نوشیدنی گرم با طعم قهوه و گزینه‌ای مناسب برای افرادی که نوشیدنی بدون شکر را ترجیح می‌دهند.",
     "image": "./products/0161.jpeg",
-    "price": 680000,
+    "price": 580000,
+    "oldPrice": 680000,
     "inStock": true
   },
   {
@@ -1544,7 +1551,8 @@
     "category": "بهداشتی",
     "description": "شامپو مو هد اند شولدرز مدل MENTOL FERAHLIGI حجم ۳۰۰ میلی‌لیتر، ضد شوره، ��اه��‌دهنده ��رب��، تقویت‌کننده و ترمیم‌کننده",
     "image": "./products/e6f6dc07-97a7-4dbd-a4fa-76905857a462.jpg",
-    "price": 1400000,
+    "price": 990000,
+    "oldPrice": 1400000,
     "inStock": true
   },
   {
@@ -2048,7 +2056,8 @@
     "category": "نوشیدنی",
     "description": "نوشیدنی انرژی زا لایف حجم 250 میلی لیتر",
     "image": "./products/793a2a6f-f4ec-4dc1-bddf-7b038ea2e731.jpg",
-    "price": 80000,
+    "price": 60000,
+    "oldPrice": 80000,
     "inStock": true
   },
   {
@@ -2075,7 +2084,8 @@
     "category": "بهداشتی",
     "description": "",
     "image": "./products/023eda20-be78-49be-9d0a-dbbaa2fd7156.webp",
-    "price": 265000,
+    "price": 249000,
+    "oldPrice": 265000,
     "inStock": true
   },
   {
@@ -2138,7 +2148,8 @@
     "category": "بهداشتی",
     "description": "دستمال کاغذی دو لایه 50 عددی 20x20 سانتی‌متر،قابل استفاده در خودرو",
     "image": "./products/d0140fe5-207b-42fe-a5bb-3d1948e82dac.webp",
-    "price": null,
+    "price": 50000,
+    "oldPrice": 54000,
     "inStock": true
   },
   {
@@ -2282,7 +2293,8 @@
     "category": "نوشیدنی",
     "description": "",
     "image": "./products/a6d9e773-b60c-41ea-a148-c792e3f67422.webp",
-    "price": 1140000,
+    "price": 1020000,
+    "oldPrice": 1140000,
     "inStock": true
   },
   {
@@ -2291,7 +2303,8 @@
     "category": "نوشیدنی",
     "description": "",
     "image": "./products/15984fe1-9a9a-496b-9eb7-4efb8aebc927.webp",
-    "price": 1140000,
+    "price": 1020000,
+    "oldPrice": 1140000,
     "inStock": true
   },
   {
@@ -2300,7 +2313,8 @@
     "category": "نوشیدنی",
     "description": "",
     "image": "./products/545ff682-e1f4-4a3f-af6e-d52fe7954a65.webp",
-    "price": 1140000,
+    "price": 1020000,
+    "oldPrice": 1140000,
     "inStock": true
   },
   {
@@ -2309,7 +2323,8 @@
     "category": "نوشیدنی",
     "description": "",
     "image": "./products/88c8c3b9-e6b3-4f71-9b2f-aaac947538d2.jpg",
-    "price": 1140000,
+    "price": 1020000,
+    "oldPrice": 1140000,
     "inStock": true
   },
   {
@@ -2318,7 +2333,8 @@
     "category": "نوشیدنی",
     "description": "",
     "image": "./products/de0bb3b1-0aa3-4591-950e-713d108e0c33.jpg",
-    "price": 1140000,
+    "price": 1020000,
+    "oldPrice": 1140000,
     "inStock": true
   },
   {
@@ -2327,7 +2343,8 @@
     "category": "نوشیدنی",
     "description": "",
     "image": "./products/5971e15f-9e8c-4436-a5b4-7c7ff75cf17a.webp",
-    "price": 1140000,
+    "price": 1020000,
+    "oldPrice": 1140000,
     "inStock": true
   },
   {
@@ -2336,7 +2353,8 @@
     "category": "نوشیدنی",
     "description": "ماءالشعیر ایستک با طعم استوایی و حجم ۱ لیتر، در بسته ۶ عددی. مناسب مصرف روزانه و پذیرایی، با طعمی میوه‌ای و دلپذیر.",
     "image": "./products/035c2510-3616-48e1-853d-903505b0e004.jpg",
-    "price": 780000,
+    "price": 670000,
+    "oldPrice": 780000,
     "inStock": true
   },
   {
@@ -2345,7 +2363,8 @@
     "category": "نوشیدنی",
     "description": "",
     "image": "./products/03baa9e2-f3d4-4583-9e44-c381692395f2.webp",
-    "price": 780000,
+    "price": 670000,
+    "oldPrice": 780000,
     "inStock": true
   },
   {
@@ -2354,7 +2373,8 @@
     "category": "نوشیدنی",
     "description": "",
     "image": "./products/b93c54e0-8704-43e6-afda-524331ae5afa.webp",
-    "price": 820000,
+    "price": 670000,
+    "oldPrice": 820000,
     "inStock": true
   },
   {
@@ -2363,7 +2383,8 @@
     "category": "نوشیدنی",
     "description": "",
     "image": "./products/c193dea2-8629-4467-9e1a-38a9a148d075.png",
-    "price": 780000,
+    "price": 670000,
+    "oldPrice": 780000,
     "inStock": true
   },
   {
@@ -2372,7 +2393,8 @@
     "category": "نوشیدنی",
     "description": "",
     "image": "./products/0e3b7ce8-7153-4f64-95d7-6de2e1112462.jpg",
-    "price": 780000,
+    "price": 670000,
+    "oldPrice": 780000,
     "inStock": true
   },
   {
@@ -2381,7 +2403,8 @@
     "category": "نوشیدنی",
     "description": "",
     "image": "./products/d1eba937-4ea1-4c94-835f-7c65a1ac34b9.webp",
-    "price": 735000,
+    "price": 650000,
+    "oldPrice": 735000,
     "inStock": true
   },
   {
@@ -2390,7 +2413,8 @@
     "category": "نوشیدنی",
     "description": "",
     "image": "./products/32f37c82-d29d-4da4-be76-e49313972824.webp",
-    "price": 735000,
+    "price": 650000,
+    "oldPrice": 735000,
     "inStock": true
   },
   {
@@ -2399,7 +2423,8 @@
     "category": "نوشیدنی",
     "description": "",
     "image": "./products/5d8aa4a0-238b-46b1-92ca-bf9d43b4f34d.webp",
-    "price": 735000,
+    "price": 650000,
+    "oldPrice": 735000,
     "inStock": true
   },
   {
@@ -2435,7 +2460,8 @@
     "category": "نوشیدنی",
     "description": "",
     "image": "./products/b72a69d5-5ad9-4378-91ed-64990c40f867.jpg",
-    "price": 1000000,
+    "price": 850000,
+    "oldPrice": 1000000,
     "inStock": true
   },
   {
@@ -2444,7 +2470,8 @@
     "category": "نوشیدنی",
     "description": "",
     "image": "./products/df1ca025-50b0-4562-93de-7c2b034e77ca.jpg",
-    "price": 1000000,
+    "price": 850000,
+    "oldPrice": 1000000,
     "inStock": true
   },
   {
