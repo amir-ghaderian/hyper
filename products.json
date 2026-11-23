@@ -281,10 +281,10 @@
   },
   {
     "id": 37,
-    "name": "بلغور دانه درشت",
+    "name": "بلغور دانه درشت anadolu",
     "category": "مواد غذایی",
     "description": "بلغور دانه درشت مناسب برای تهیه انواع غذاها از جمله پلوی بلغور، سوپ و آش.",
-    "image": "./products/39.jpeg",
+    "image": "./products/82b41e6b-5c7a-4d96-859d-41fb5af8be1e.jpg",
     "price": 490000,
     "inStock": true
   },
@@ -1784,7 +1784,7 @@
     "id": 208,
     "name": "بلغور درشت یشیل",
     "category": "مواد غذایی",
-    "description": "بلغور درشت یشیل \nوزن یک کیلو گرم",
+    "description": "بلغور درشت یشیل \n مناسب برای تهیه انواع غذاها از جمله پلو، سوپ و آش\nوزن یک کیلو گرم",
     "image": "./products/e99c5854-47ac-4504-bcf9-8a198e696c5e.jpg",
     "price": 490000,
     "inStock": true
