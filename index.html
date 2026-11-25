@@ -133,193 +133,398 @@
             padding: 15px
         }
 
-        /* ================= بنر متحرک ================= */
-        .slider {
+        /* ================= بنر اختصاصی Black Friday ================= */
+        .bf-hero {
             position: relative;
+            overflow: hidden;
             border-radius: 27px;
-            overflow: hidden;
             color: #fff;
-            box-shadow: 0 18px 45px rgba(6, 78, 59, .18);
-            touch-action: pan-y
+            background: radial-gradient(115% 140% at 88% -18%, #3d0c12 0%, #1b0508 44%, #0a0a0c 100%);
+            border: 1px solid #2b2b31;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, .3);
+            min-height: 250px;
+            display: flex;
+            align-items: center
         }
 
-        .slides {
-            display: grid
+        /* اشکال مورب و هندسی پس‌زمینه */
+        .bf-deco {
+            position: absolute;
+            display: block;
+            z-index: 0;
+            pointer-events: none
         }
 
-        .slide {
-            grid-area: 1/1;
+        .bf-deco.d1 {
+            left: -12%;
+            right: -12%;
+            bottom: -58%;
+            height: 62%;
+            background: linear-gradient(90deg, rgba(220, 38, 38, .8), rgba(120, 10, 20, .12));
+            transform: skewY(-7deg) rotate(-3deg);
+            opacity: .5
+        }
+
+        .bf-deco.d2 {
+            top: -34%;
+            left: -16%;
+            width: 58%;
+            height: 172%;
+            background: linear-gradient(180deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, 0));
+            border-left: 1px solid rgba(255, 255, 255, .12);
+            transform: skewX(-14deg) rotate(8deg)
+        }
+
+        .bf-deco.d3 {
+            right: -6%;
+            top: -22%;
+            width: 34%;
+            height: 150%;
+            background: repeating-linear-gradient(-45deg, rgba(255, 255, 255, .055) 0 2px, transparent 2px 9px);
+            transform: skewX(9deg);
+            animation: bfDrift 11s ease-in-out infinite
+        }
+
+        .bf-deco.d4 {
+            left: 9%;
+            bottom: 9%;
+            width: 86px;
+            height: 86px;
+            border: 2px solid rgba(220, 38, 38, .62);
+            box-shadow: 0 0 28px rgba(220, 38, 38, .18), inset 0 0 18px rgba(220, 38, 38, .12);
+            animation: bfSpin 26s linear infinite
+        }
+
+        .bf-ghost {
+            display: none;
+            position: absolute;
+            z-index: 1;
+            left: 3%;
+            top: 50%;
+            font-family: "Vazirmatn", "Arial Black", Impact, sans-serif;
+            font-weight: 900;
+            font-size: 44px;
+            letter-spacing: 8px;
+            white-space: nowrap;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255, 255, 255, .24);
+            transform: translateY(-50%) rotate(-90deg) skewX(-6deg);
+            pointer-events: none;
+            animation: bfGhost 13s ease-in-out infinite
+        }
+
+        .bf-copy {
             position: relative;
-            overflow: hidden;
-            min-height: 230px;
-            padding: 34px 22px 56px;
+            z-index: 2;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: opacity .6s ease, transform .6s ease, visibility .6s
+            align-items: flex-start;
+            gap: 10px;
+            padding: 26px 20px 28px;
+            max-width: 100%
         }
 
-        .slide.active {
-            opacity: 1;
-            visibility: visible;
+        .bf-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            border-radius: 999px;
+            padding: 5px 11px;
+            background: rgba(220, 38, 38, .16);
+            border: 1px solid rgba(220, 38, 38, .45);
+            color: #ffd9dc;
+            font-size: 10px;
+            font-weight: 800
+        }
+
+        .bf-kicker .bf-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #ef4444;
+            animation: bfPulse 2.8s ease-out infinite
+        }
+
+        .bf-title {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            font-family: "Vazirmatn", "Arial Black", Impact, system-ui, sans-serif;
+            font-weight: 900;
+            line-height: .88;
+            letter-spacing: -.5px;
+            text-transform: uppercase;
+            transform: skewX(-6deg)
+        }
+
+        .bf-title span {
+            display: block
+        }
+
+        .bf-title .t1 {
+            font-size: clamp(36px, 12.5vw, 60px);
+            color: #fff;
+            text-shadow: 0 8px 26px rgba(0, 0, 0, .55)
+        }
+
+        .bf-title .t2 {
+            font-size: clamp(36px, 12.5vw, 60px);
+            color: #ef2b45;
+            text-shadow: 0 8px 26px rgba(0, 0, 0, .55);
+            animation: bfGlow 5.6s ease-in-out infinite
+        }
+
+        .bf-bar {
+            display: block;
+            width: 76px;
+            height: 4px;
+            border-radius: 2px;
+            background: linear-gradient(90deg, #ef4444, rgba(239, 68, 68, 0));
+            transform: skewX(-32deg);
+            animation: bfBar 6.4s ease-in-out infinite
+        }
+
+        .bf-sub {
+            margin: 0;
+            max-width: 470px;
+            color: #d5d5da;
+            font-size: 11.5px;
+            line-height: 2
+        }
+
+        .bf-stat {
+            color: #f4f4f6;
+            font-size: 11px;
+            font-weight: 700
+        }
+
+        .bf-stat b {
+            color: #ff9aa7;
+            font-size: 14px
+        }
+
+        /* ===== تایمر شمارش معکوس Black Friday =====
+           بلوک مستقل، بلافاصله زیر بنر Hero. داخل خودش LTR است تا ترتیب
+           DAYS→HOURS→MINUTES→SECONDS و ارقام به‌هم نریزد. */
+        .bf-timer {
+            position: relative;
+            z-index: 2;
+            direction: ltr;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            width: 100%;
+            max-width: 100%;
+            margin-top: 10px;
+            padding: 9px 11px 10px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #0a0a0c 0%, #17171c 56%, #0c0c0f 100%);
+            border: 1px solid rgba(255, 255, 255, .12);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, .45), inset 0 1px 0 rgba(255, 255, 255, .06);
+            overflow: hidden
+        }
+
+        .bf-timer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #dc2626, rgba(220, 38, 38, 0) 62%);
+            transform: skewX(-32deg);
+            transform-origin: left top
+        }
+
+        .bf-timer-grid {
+            display: flex;
+            align-items: stretch;
+            justify-content: space-between;
+            gap: 6px;
+            direction: ltr
+        }
+
+        .bf-unit {
+            display: flex;
+            flex: 1 1 0;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 0;
+            padding: 3px 8px 4px;
+            border-radius: 9px;
+            background: rgba(255, 255, 255, .045);
+            border: 1px solid rgba(255, 255, 255, .07)
+        }
+
+        .bf-unit .num {
+            font-family: "Arial Black", "Helvetica Neue", Impact, system-ui, sans-serif;
+            font-size: clamp(21px, 6.6vw, 30px);
+            font-weight: 900;
+            line-height: 1.2;
+            letter-spacing: .5px;
+            font-variant-numeric: tabular-nums;
+            direction: ltr;
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, .6)
+        }
+
+        .bf-unit .lbl {
+            font-family: "Helvetica Neue", Arial, system-ui, sans-serif;
+            font-size: 8px;
+            font-weight: 700;
+            color: #a5a5b0;
+            letter-spacing: .9px;
+            text-transform: uppercase;
+            direction: ltr
+        }
+
+        /* روز و ساعت: سفید */
+        .bf-unit.u-days .num {
+            color: #fff
+        }
+
+        .bf-unit.u-hours .num {
+            color: #f2f2f5
+        }
+
+        /* دقیقه: طلایی */
+        .bf-unit.u-mins .num {
+            color: #f6c453;
+            text-shadow: 0 2px 12px rgba(246, 196, 83, .3)
+        }
+
+        /* ثانیه: قرمز روشن */
+        .bf-unit.u-secs .num {
+            color: #ff3049;
+            text-shadow: 0 2px 14px rgba(255, 48, 73, .4)
+        }
+
+        .bf-ended {
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 1.4px;
+            text-align: center;
+            color: #ff3049;
+            text-shadow: 0 2px 12px rgba(255, 48, 73, .35)
+        }
+
+        .bf-ended[hidden] {
+            display: none
+        }
+
+        .bf-timer.is-ended .bf-unit .num {
+            opacity: .5;
+            text-shadow: none
+        }
+
+        .bf-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 2px;
+            border: 0;
+            border-radius: 14px;
+            padding: 11px 17px;
+            background: linear-gradient(135deg, #ef4444, #b01722);
+            color: #fff;
+            font-size: 11.5px;
+            font-weight: 900;
+            box-shadow: 0 10px 24px rgba(176, 23, 34, .35);
+            transition: transform .18s ease, box-shadow .18s ease
+        }
+
+        .bf-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 14px 28px rgba(176, 23, 34, .45)
+        }
+
+        .bf-cta:active {
             transform: none
         }
 
-        .slide:after {
-            content: "";
-            position: absolute;
-            width: 230px;
-            height: 230px;
-            border-radius: 50%;
-            left: -80px;
-            bottom: -130px;
-            background: rgba(255, 255, 255, .08)
+        @keyframes bfDrift {
+
+            0%,
+            100% {
+                transform: skewX(9deg) translateX(0)
+            }
+
+            50% {
+                transform: skewX(9deg) translateX(-15px)
+            }
         }
 
-        .s1 {
-            background: linear-gradient(135deg, #052e24, #047857)
-        }
-
-        .s2 {
-            background: linear-gradient(135deg, #0b3b34, #0f766e)
-        }
-
-        .s3 {
-            background: linear-gradient(135deg, #073b2d, #15803d)
-        }
-
-        .slide .ico {
-            position: absolute;
-            left: 16px;
-            top: 14px;
-            font-size: 44px;
-            line-height: 1;
-            z-index: 1
-        }
-
-        .kicker {
-            font-size: 11px;
-            font-weight: 800;
-            color: #a7f3d0;
-            position: relative;
-            z-index: 1
-        }
-
-        .slogan {
-            font-family: "Lalezar", "Vazirmatn", Tahoma, sans-serif;
-            line-height: 1.6;
-            margin: 8px 0;
-            font-weight: 900;
-            position: relative;
-            z-index: 1
-        }
-
-        .slogan em {
-            font-style: normal;
-            background: #fbbf24;
-            color: #3b2500;
-            border-radius: 9px;
-            padding: 0 8px;
-            -webkit-box-decoration-break: clone;
-            box-decoration-break: clone
-        }
-
-        .slide p {
-            margin: 0;
-            max-width: 560px;
-            color: #d1fae5;
-            font-size: 12px;
-            line-height: 2;
-            position: relative;
-            z-index: 1
-        }
-
-        .arrow {
-            display: none;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 0;
-            background: rgba(255, 255, 255, .18);
-            color: #fff;
-            font-size: 24px;
-            line-height: 1;
-            z-index: 3;
-            backdrop-filter: blur(6px)
-        }
-
-        .arrow:hover {
-            background: rgba(255, 255, 255, .3)
-        }
-
-        .arrow.prev {
-            right: 12px
-        }
-
-        .arrow.next {
-            left: 12px
-        }
-
-        .dots {
-            position: absolute;
-            bottom: 15px;
-            right: 0;
-            left: 0;
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            z-index: 3
-        }
-
-        .dot {
-            position: relative;
-            width: 8px;
-            height: 8px;
-            padding: 0;
-            border: 0;
-            border-radius: 99px;
-            background: rgba(255, 255, 255, .4);
-            transition: width .3s, background .3s
-        }
-
-        .dot:after {
-            content: "";
-            position: absolute;
-            inset: -10px
-        }
-
-        .dot.active {
-            width: 24px;
-            background: #fff
-        }
-
-        .progress {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            height: 3px;
-            width: 0;
-            background: rgba(255, 255, 255, .6);
-            z-index: 3
-        }
-
-        .progress.run {
-            animation: fill var(--dur, 5s) linear forwards
-        }
-
-        @keyframes fill {
+        @keyframes bfSpin {
             from {
-                width: 0
+                transform: rotate(0)
             }
 
             to {
-                width: 100%
+                transform: rotate(360deg)
+            }
+        }
+
+        @keyframes bfGhost {
+
+            0%,
+            100% {
+                opacity: .55
+            }
+
+            50% {
+                opacity: .95
+            }
+        }
+
+        @keyframes bfPulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, .5)
+            }
+
+            70% {
+
+        .chip.chip-bf {
+            border-color: #111;
+            color: #111;
+            letter-spacing: .3px
+        }
+
+        .chip.chip-bf.active {
+            background: #111;
+            border-color: #dc2626;
+            color: #fff
+        }
+                box-shadow: 0 0 0 9px rgba(239, 68, 68, 0)
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0)
+            }
+        }
+
+        @keyframes bfGlow {
+
+            0%,
+            100% {
+                text-shadow: 0 8px 26px rgba(0, 0, 0, .55)
+            }
+
+            50% {
+                text-shadow: 0 8px 26px rgba(0, 0, 0, .55), 0 0 24px rgba(239, 43, 69, .5)
+            }
+        }
+
+        @keyframes bfBar {
+
+            0%,
+            100% {
+                width: 76px
+            }
+
+            50% {
+                width: 118px
             }
         }
 
@@ -477,70 +682,125 @@
         .price-line {
             margin-top: 8px;
             display: flex;
+            flex-wrap: wrap;
+            align-items: center;
             justify-content: space-between;
-            gap: 6px;
-            font-size: 10px;
+            gap: 5px;
+            font-size: 9.5px;
             font-weight: 900
         }
 
         .price-line b {
-            color: #047857
+            color: #047857;
+            white-space: nowrap
         }
 
-        /* چشمک‌زن ملایم کادر/نشان قرمز حراج (فقط عنصر قرمز، نه کل کارت) */
-        @keyframes saleBlink {
+        /* ===== قاب حراج Black Friday =====
+           حلقهٔ قرمز (border) و خط مشکی بیرونی (box-shadow) هر دو نرم
+           کم‌رنگ/پررنگ می‌شوند، ولی با مدت و فاز مستقل تا هرگز دقیقاً
+           هم‌زمان نباشند. هر محصول با --bf-d1/--bf-d2 فاز جدا دارد و
+           هیچ‌کدام از دو حلقه کاملاً ناپدید نمی‌شود. */
+        @keyframes saleRedPulse {
 
             0%,
             100% {
-                border-color: #dc2626;
-                box-shadow: 0 0 0 3px #fee2e2
+                border-color: #dc2626
             }
 
             50% {
-                border-color: #fca5a5;
-                box-shadow: 0 0 0 3px rgba(220, 38, 38, .12)
+                border-color: #f2a6a6
             }
         }
 
-        @keyframes badgeBlink {
+        @keyframes saleBlackPulse {
 
             0%,
             100% {
-                opacity: 1
+                box-shadow: 0 0 0 1px rgba(10, 10, 10, 1), 0 0 0 2px rgba(220, 38, 38, .16), 0 8px 22px rgba(0, 0, 0, .10)
             }
 
             50% {
-                opacity: .35
+                box-shadow: 0 0 0 1px rgba(10, 10, 10, .34), 0 0 0 2px rgba(220, 38, 38, .05), 0 8px 22px rgba(0, 0, 0, .10)
             }
         }
 
         .card.sale {
+            position: relative;
             border: 2px solid #dc2626;
-            box-shadow: 0 0 0 3px #fee2e2;
-            animation: saleBlink 1.4s ease-in-out infinite
+            box-shadow: 0 0 0 1px rgba(10, 10, 10, 1), 0 0 0 2px rgba(220, 38, 38, .16), 0 8px 22px rgba(0, 0, 0, .10);
+            animation: saleRedPulse 1.6s ease-in-out infinite, saleBlackPulse 1.9s ease-in-out infinite;
+            animation-delay: var(--bf-d1, 0s), var(--bf-d2, -.6s)
+        }
+
+        /* روبان مورب BLACK FRIDAY روی گوشهٔ بالا-چپ کارت‌های حراج */
+        .bf-ribbon {
+            position: absolute;
+            top: 0;
+            left: 0;
+            /* اندازهٔ روبان با عرض کارت هم‌مقیاس می‌شود (موبایل تا دسکتاپ) */
+            --bf-r: clamp(88px, 13vw, 118px);
+            --bf-rf: calc(var(--bf-r) * 0.073);
+            width: var(--bf-r);
+            height: var(--bf-r);
+            overflow: hidden;
+            z-index: 4;
+            pointer-events: none
+        }
+
+        .bf-ribbon i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 210px;
+            padding: 4px 0;
+            font-style: normal;
+            font-family: "Vazirmatn", "Arial Black", Impact, sans-serif;
+            font-size: var(--bf-rf, 7px);
+            font-weight: 900;
+            letter-spacing: .3px;
+            line-height: 1;
+            text-align: center;
+            white-space: nowrap;
+            color: #fff;
+            background: linear-gradient(90deg, #141414 0%, #000 45%, #24070a 100%);
+            border-top: 1px solid #dc2626;
+            border-bottom: 1px solid #dc2626;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, .35);
+            transform: translate(-50%, -50%) translate(calc(var(--bf-r, 88px) * -0.24), calc(var(--bf-r, 88px) * -0.24)) rotate(-45deg)
         }
 
         .price-box {
             display: flex;
             flex-direction: column;
-            gap: 2px
+            gap: 2px;
+            flex: 0 1 auto;
+            min-width: 0
         }
 
         .old-price {
             color: #6b7280;
             font-size: 10px;
+            white-space: nowrap;
             text-decoration: line-through;
             text-decoration-color: #dc2626;
             text-decoration-thickness: 2px
         }
 
-        .sale-badge {
-            padding: 3px 7px;
+        /* کادرهای حراج/موجودی: اندازهٔ متناسب با متن، بدون کش‌آمدن */
+        .sale-badge,
+        .stock-badge {
+            flex: 0 0 auto;
+            align-self: center;
+            white-space: nowrap;
+            line-height: 1.7;
+            padding: 2px 7px;
             border-radius: 999px;
+            font-size: 8.5px
+        }
+
+        .sale-badge {
             background: #dc2626;
-            color: #fff;
-            font-size: 9px;
-            animation: badgeBlink 1.4s ease-in-out infinite
+            color: #fff
         }
 
         .mprice {
@@ -555,11 +815,8 @@
         }
 
         .stock-badge {
-            padding: 3px 7px;
-            border-radius: 999px;
             background: #ecfdf5;
-            color: #047857;
-            font-size: 9px
+            color: #047857
         }
 
         .stock-badge.out {
@@ -670,24 +927,46 @@
                 align-items: center
             }
 
-            .slide {
-                min-height: 280px;
-                padding: 44px 64px 60px
+            .bf-hero {
+                min-height: 300px
             }
 
-            .slide .ico {
-                left: 60px;
-                top: 50%;
-                transform: translateY(-50%);
-                font-size: 110px
+            .bf-copy {
+                padding: 46px 58px;
+                gap: 13px;
+                max-width: 68%
             }
 
-            .slogan {
-                max-width: 640px
+            .bf-title .t1,
+            .bf-title .t2 {
+                font-size: clamp(58px, 6.8vw, 92px)
             }
 
-            .arrow {
+            .bf-sub {
+                font-size: 13px
+            }
+
+            .bf-ghost {
                 display: block
+            }
+
+            .bf-deco.d4 {
+                left: 12%;
+                bottom: 10%;
+                width: 132px;
+                height: 132px
+            }
+
+            /* دسکتاپ: اندازه‌های قبلی حفظ می‌شود */
+            .price-line {
+                gap: 6px;
+                font-size: 10px
+            }
+
+            .sale-badge,
+            .stock-badge {
+                padding: 3px 7px;
+                font-size: 9px
             }
         }
 
@@ -703,18 +982,104 @@
             }
         }
 
+        /* موبایل: چیدمان فشرده‌تر کارت‌ها، بدون کش‌آمدگی و بیرون‌زدگی */
+        @media(max-width:520px) {
+            .wrap {
+                padding: 12px
+            }
+
+            .grid {
+                gap: 8px
+            }
+
+            .category {
+                padding: 12px
+            }
+
+            .photo {
+                padding: 6px
+            }
+
+            .body {
+                padding: 8px
+            }
+
+            .title {
+                font-size: 10.5px;
+                line-height: 1.7;
+                min-height: 36px
+            }
+
+            .desc {
+                font-size: 8.5px
+            }
+
+            .more {
+                margin-top: 6px;
+                font-size: 8.5px
+            }
+
+            .price-line {
+                margin-top: 6px;
+                gap: 4px
+            }
+
+            .old-price {
+                font-size: 9px
+            }
+
+            .sale-badge,
+            .stock-badge {
+                padding: 2px 6px;
+                font-size: 8px
+            }
+
+            /* تایمر: نسخهٔ فشردهٔ موبایل، بدون کشیدگی و سرریز */
+            .bf-timer {
+                margin-top: 8px;
+                padding: 6px 7px 7px;
+                gap: 4px;
+                border-radius: 11px
+            }
+
+            .bf-timer-grid {
+                gap: 3px
+            }
+
+            .bf-unit {
+                padding: 2px 4px 3px;
+                border-radius: 7px
+            }
+
+            .bf-unit .num {
+                font-size: 17px;
+                letter-spacing: 0
+            }
+
+            .bf-unit .lbl {
+                font-size: 6.5px;
+                letter-spacing: .4px
+            }
+
+            .bf-ended {
+                font-size: 8px;
+                letter-spacing: .8px
+            }
+        }
+
         @media(prefers-reduced-motion:reduce) {
-            .slide {
+            .bf-deco.d3,
+            .bf-deco.d4,
+            .bf-ghost,
+            .bf-title .t2,
+            .bf-kicker .bf-dot,
+            .bf-bar,
+            .card.sale {
+                animation: none !important
+            }
+
+            .bf-cta {
                 transition: none
-            }
-
-            .progress {
-                display: none
-            }
-
-            .card.sale,
-            .card.sale .sale-badge {
-                animation: none
             }
         }
     </style>
@@ -733,34 +1098,34 @@
     </header>
 
     <section class="wrap">
-        <div class="slider" id="slider" role="region" aria-roledescription="carousel" aria-label="بنرهای هایپر سعید">
-            <div class="slides">
-                <div class="slide s1 active">
-                    <span class="ico" aria-hidden="true">🧴</span>
-                    <div class="kicker">هایپر سعید</div>
-                    <h2 class="slogan">با کیفیت‌ترین اجناس شوینده‌های خارجی، با <em>کمترین قیمت</em></h2>
-                    <p>بهترین برندهای وارداتی شوینده و بهداشتی رو از هایپر سعید بخرید.</p>
-                </div>
+        <section class="bf-hero" id="bfhero" role="region" aria-label="فروش ویژه Black Friday">
+            <span class="bf-deco d1" aria-hidden="true"></span>
+            <span class="bf-deco d2" aria-hidden="true"></span>
+            <span class="bf-deco d3" aria-hidden="true"></span>
+            <span class="bf-deco d4" aria-hidden="true"></span>
+            <span class="bf-ghost" aria-hidden="true">BLACK FRIDAY</span>
 
-                <div class="slide s2">
-                    <span class="ico" aria-hidden="true">🏭</span>
-                    <div class="kicker">هایپر سعید</div>
-                    <h2 class="slogan">عرضه مستقیم محصولات ایرانی، <em>زیر قیمت کارخانه</em></h2>
-                    <p>بدون واسطه، مستقیم و ارزان.</p>
-                </div>
-
-                <div class="slide s3">
-                    <span class="ico" aria-hidden="true">🛒</span>
-                    <div class="kicker">هایپر سعید</div>
-                    <h2 class="slogan">همه‌چیز در یک جا: شوینده، بهداشتی، نوشیدنی و مواد غذایی</h2>
-                    <p>خرید آسان، انتخاب مطمئن.</p>
-                </div>
+            <div class="bf-copy">
+                <span class="bf-kicker"><span class="bf-dot" aria-hidden="true"></span>فروش ویژه — Black Friday</span>
+                <h1 class="bf-title"><span class="t1">BLACK</span><span class="t2">FRIDAY</span></h1>
+                <span class="bf-bar" aria-hidden="true"></span>
+                <p class="bf-sub">تخفیف‌های Black Friday روی محصولات انتخاب‌شدهٔ هایپرمارکت. برای دیدن کالاهای حراجی
+                    دکمهٔ زیر را بزنید یا از فیلتر «Black Friday» بالای فهرست استفاده کنید.</p>
+                <div class="bf-stat" id="bfstat"></div>
+                <button class="bf-cta" id="bfcta" type="button">مشاهده محصولات حراجی<span aria-hidden="true">←</span></button>
             </div>
+        </section>
 
-            <button class="arrow prev" id="prev" aria-label="بنر قبلی">›</button>
-            <button class="arrow next" id="next" aria-label="بنر بعدی">‹</button>
-            <div class="dots" id="dots"></div>
-            <div class="progress" id="bar"></div>
+        <!-- تایمر شمارش معکوس: بلافاصله زیر بنر Hero -->
+        <div class="bf-timer" id="bftimer" role="timer" aria-live="off"
+            aria-label="شمارش معکوس پایان Black Friday">
+            <div class="bf-timer-grid">
+                <div class="bf-unit u-days"><b class="num" data-unit="days">00</b><span class="lbl">DAYS</span></div>
+                <div class="bf-unit u-hours"><b class="num" data-unit="hours">00</b><span class="lbl">HOURS</span></div>
+                <div class="bf-unit u-mins"><b class="num" data-unit="minutes">00</b><span class="lbl">MINUTES</span></div>
+                <div class="bf-unit u-secs"><b class="num" data-unit="seconds">00</b><span class="lbl">SECONDS</span></div>
+            </div>
+            <div class="bf-ended" id="bfended" hidden>BLACK FRIDAY ENDED</div>
         </div>
 
         <div class="mini">
@@ -796,13 +1161,20 @@
         };
         const order = ["همه", "حراج", "بهداشتی", "شوینده", "نوشیدنی", "مواد غذایی"];
         const isSale = p => p.oldPrice !== undefined && p.oldPrice !== null && p.oldPrice !== "" && Number(p.oldPrice) > Number(p.price);
-        const saleLabel = c => c === "همه" ? "همه محصولات" : (c === "حراج" ? "🔥 حراج" : info[c].title);
+        const saleLabel = c => c === "همه" ? "همه محصولات" : (c === "حراج" ? "Black Friday" : info[c].title);
         let active = "همه", q = "";
         const content = document.getElementById("content"), chips = document.getElementById("chips"), search = document.getElementById("search"), modal = document.getElementById("modal");
         document.getElementById("total").textContent = products.length;
         function esc(s) { return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[c])) }
-        function chipRender() { chips.innerHTML = order.map(c => `<button class="chip ${c === active ? "active" : ""}" data-c="${c}">${saleLabel(c)}</button>`).join(""); chips.querySelectorAll("button").forEach(b => b.onclick = () => { active = b.dataset.c; render() }) }
-        function card(p) { return `<article class="card${p.oldPrice ? " sale" : ""}" data-id="${p.id}"><div class="photo"><img src="${p.image}" alt="${esc(p.name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="fallback">تصویر محصول در دسترس نیست</div></div><div class="body"><div class="title">${esc(p.name)}</div><div class="desc">${esc(p.description)}</div><div class="price-line">${p.price !== null && p.price !== "" ? (p.oldPrice ? `<div class="price-box"><span class="old-price">${esc(Number(p.oldPrice).toLocaleString("fa-IR"))} تومان</span><b>${esc(Number(p.price).toLocaleString("fa-IR"))} تومان</b></div>` : `<b>${esc(Number(p.price).toLocaleString("fa-IR"))} تومان</b>`) : "<span></span>"}${p.oldPrice ? `<span class="sale-badge">حراج</span>` : ""}<span class="stock-badge ${p.inStock === false ? "out" : ""}">${p.inStock === false ? "ناموجود" : "موجود"}</span></div><div class="more">مشاهده جزئیات ←</div></div></article>` }
+        function chipRender() { chips.innerHTML = order.map(c => `<button class="chip ${c === active ? "active" : ""}${c === "حراج" ? " chip-bf" : ""}" data-c="${c}">${saleLabel(c)}</button>`).join(""); chips.querySelectorAll("button").forEach(b => b.onclick = () => { active = b.dataset.c; render() }) }
+        function card(p) {
+            // محصول حراجی: قاب قرمز/مشکی + روبان BLACK FRIDAY
+            // فاز و تأخیر مستقل برای هر محصول و جدا برای هر یک از دو حلقه
+            const sale = isSale(p);
+            const d1 = "-" + ((Number(p.id) * 137) % 1600) + "ms";
+            const d2 = "-" + ((Number(p.id) * 311 + 570) % 1900) + "ms";
+            return `<article class="card${sale ? " sale" : ""}" data-id="${p.id}"${sale ? ` style="--bf-d1:${d1};--bf-d2:${d2}"` : ""}>${sale ? `<span class="bf-ribbon" aria-hidden="true"><i>BLACK FRIDAY</i></span>` : ""}<div class="photo"><img src="${p.image}" alt="${esc(p.name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="fallback">تصویر محصول در دسترس نیست</div></div><div class="body"><div class="title">${esc(p.name)}</div><div class="desc">${esc(p.description)}</div><div class="price-line">${p.price !== null && p.price !== "" ? (sale ? `<div class="price-box"><span class="old-price">${esc(Number(p.oldPrice).toLocaleString("fa-IR"))} تومان</span><b>${esc(Number(p.price).toLocaleString("fa-IR"))} تومان</b></div>` : `<b>${esc(Number(p.price).toLocaleString("fa-IR"))} تومان</b>`) : "<span></span>"}${sale ? `<span class="sale-badge">حراج</span>` : ""}<span class="stock-badge ${p.inStock === false ? "out" : ""}">${p.inStock === false ? "ناموجود" : "موجود"}</span></div><div class="more">مشاهده جزئیات ←</div></div></article>`
+        }
 
         // اولویت حراج فقط در سطح «هر محصول» است (نه دسته‌بندی/زیرگروه):
         // محصولات حراجی هر دسته به ابتدای همان دسته می‌روند و ترتیب نسبی
@@ -858,7 +1230,7 @@
                 }
                 content.innerHTML = categories.map(c => {
                     const a = orderBySale(saleItems.filter(p => p.category === c));
-                    return a.length ? section(info[c].title + " — حراج", info[c].desc, a.length, a) : "";
+                    return a.length ? section(info[c].title + " — Black Friday", info[c].desc, a.length, a) : "";
                 }).join("");
                 bindCards();
                 return;
@@ -905,78 +1277,84 @@
                 return;
             }
             document.getElementById("total").textContent = products.length;
+            heroStat();
             render();
         }
         loadProducts();
 
-        /* ================= بنر خودکار ================= */
+        /* ================= بنر Black Friday: دکمهٔ فیلتر + آمار واقعی ================= */
         (function () {
-            const slider = document.getElementById("slider");
-            const slides = [...slider.querySelectorAll(".slide")];
-            const dotsBox = document.getElementById("dots");
-            const bar = document.getElementById("bar");
-            const DELAY = 5000; // مدت نمایش هر بنر (میلی‌ثانیه)
             const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-            let i = 0, timer = null;
+            const cta = document.getElementById("bfcta");
+            if (cta) cta.onclick = () => {
+                active = "حراج";
+                q = "";
+                search.value = "";
+                render();
+                const target = document.getElementById("content");
+                if (target) target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+            };
+        })();
 
-            slides.forEach((_, n) => {
-                const b = document.createElement("button");
-                b.className = "dot";
-                b.setAttribute("aria-label", "بنر " + (n + 1));
-                b.onclick = () => { go(n); play(); };
-                dotsBox.appendChild(b);
-            });
-            const dots = [...dotsBox.children];
+        /* بیشترین تخفیف از روی دادهٔ واقعی products.json محاسبه می‌شود (بدون دادهٔ ساختگی) */
+        function heroStat() {
+            const box = document.getElementById("bfstat");
+            if (!box) return;
+            const items = products.filter(isSale);
+            if (!items.length) { box.style.display = "none"; return; }
+            const max = Math.max(...items.map(p => Math.round((Number(p.oldPrice) - Number(p.price)) / Number(p.oldPrice) * 100)));
+            box.innerHTML = `بیشترین تخفیف: <b>٪${max.toLocaleString("fa-IR")}</b> · <b>${items.length.toLocaleString("fa-IR")}</b> کالای حراجی`;
+        }
 
-            function go(n) {
-                i = (n + slides.length) % slides.length;
-                slides.forEach((s, k) => {
-                    s.classList.toggle("active", k === i);
-                    s.setAttribute("aria-hidden", k === i ? "false" : "true");
-                });
-                dots.forEach((d, k) => d.classList.toggle("active", k === i));
+        /* ================= تایمر شمارش معکوس Black Friday =================
+           پایان ثابت و مستقل از ساعت سیستم: چهارشنبه ۲ دسامبر ۲۰۲۶، ۲۳:۵۹:۵۹
+           به وقت ایران (Asia/Tehran = UTC+03:30). با رفرش صفحه از نو شروع نمی‌شود. */
+        (function () {
+            const box = document.getElementById("bftimer");
+            if (!box) return;
+            const END = Date.parse("2026-12-02T23:59:59+03:30");
+            const el = {
+                days: box.querySelector('[data-unit="days"]'),
+                hours: box.querySelector('[data-unit="hours"]'),
+                minutes: box.querySelector('[data-unit="minutes"]'),
+                seconds: box.querySelector('[data-unit="seconds"]')
+            };
+            const ended = document.getElementById("bfended");
+            const pad = n => String(n).padStart(2, "0"); // ارقام لاتین (LTR)
+            let timer = null;
+
+            function paint(d, h, m, s) {
+                el.days.textContent = pad(d);
+                el.hours.textContent = pad(h);
+                el.minutes.textContent = pad(m);
+                el.seconds.textContent = pad(s);
             }
 
-            function stop() {
-                clearTimeout(timer);
-                bar.classList.remove("run");
-            }
-
-            function play() {
-                stop();
-                if (reduce) return;
-                void bar.offsetWidth; // ری‌استارت انیمیشن نوار پیشرفت
-                bar.style.setProperty("--dur", DELAY + "ms");
-                bar.classList.add("run");
-                timer = setTimeout(() => { go(i + 1); play(); }, DELAY);
-            }
-
-            document.getElementById("prev").onclick = () => { go(i - 1); play(); };
-            document.getElementById("next").onclick = () => { go(i + 1); play(); };
-
-            // با موس یا فوکوس، حرکت متوقف می‌شه
-            slider.addEventListener("mouseenter", stop);
-            slider.addEventListener("mouseleave", play);
-            slider.addEventListener("focusin", stop);
-            slider.addEventListener("focusout", play);
-
-            // کشیدن با انگشت (چون صفحه راست‌به‌چپه، کشیدن به چپ = بنر بعدی)
-            let x0 = null;
-            slider.addEventListener("touchstart", e => { x0 = e.touches[0].clientX; stop(); }, { passive: true });
-            slider.addEventListener("touchend", e => {
-                if (x0 !== null) {
-                    const dx = e.changedTouches[0].clientX - x0;
-                    if (Math.abs(dx) > 40) go(dx < 0 ? i + 1 : i - 1);
+            function tick() {
+                const left = END - Date.now();
+                if (left <= 0) { // پایان حراج: روی صفر متوقف می‌شود و پیام نمایش داده می‌شود
+                    paint(0, 0, 0, 0);
+                    box.classList.add("is-ended");
+                    if (ended) ended.hidden = false;
+                    clearTimeout(timer);
+                    timer = null;
+                    return;
                 }
-                x0 = null;
-                play();
+                const t = Math.floor(left / 1000);
+                paint(Math.floor(t / 86400), Math.floor(t / 3600) % 24, Math.floor(t / 60) % 60, t % 60);
+                timer = setTimeout(tick, 1000 - (Date.now() % 1000)); // هم‌تراز با ثانیهٔ بعد
+            }
+
+            tick();
+            document.addEventListener("visibilitychange", () => {
+                if (document.hidden) {
+                    clearTimeout(timer);
+                    timer = null;
+                } else if (!box.classList.contains("is-ended")) {
+                    clearTimeout(timer);
+                    tick();
+                }
             });
-
-            // وقتی تب پنهانه، حرکت نکنه
-            document.addEventListener("visibilitychange", () => document.hidden ? stop() : play());
-
-            go(0);
-            play();
         })();
     </script>
 </body>
