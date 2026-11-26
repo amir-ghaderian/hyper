@@ -484,6 +484,13 @@
             }
 
             70% {
+                box-shadow: 0 0 0 9px rgba(239, 68, 68, 0)
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0)
+            }
+        }
 
         .chip.chip-bf {
             border-color: #111;
@@ -495,13 +502,6 @@
             background: #111;
             border-color: #dc2626;
             color: #fff
-        }
-                box-shadow: 0 0 0 9px rgba(239, 68, 68, 0)
-            }
-
-            100% {
-                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0)
-            }
         }
 
         @keyframes bfGlow {
@@ -859,6 +859,9 @@
         .modal.show {
             display: flex
         }
+        #productModal { z-index: 52; }
+        #cartModal { z-index: 54; }
+        #paymentModal { z-index: 56; }
 
         .modalbox {
             width: min(620px, 100%);
@@ -1082,6 +1085,263 @@
                 transition: none
             }
         }
+    
+
+        /* ================= اسلایدشوی هیرو =================
+           اسلاید پوستر مطلق است و در محاسبه ارتفاع هیرو دخالت نمی‌کند. */
+        #bfhero {
+            isolation: isolate;
+        }
+
+        #bfhero .bf-copy {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity .65s ease, visibility 0s linear 0s;
+        }
+
+        #bfhero .bf-poster-slide {
+            position: absolute;
+            inset: 0;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #09090b;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity .65s ease, visibility 0s linear .65s;
+        }
+
+        #bfhero .bf-poster-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            object-position: center;
+        }
+
+        #bfhero.is-poster .bf-copy {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity .65s ease, visibility 0s linear .65s;
+        }
+
+        #bfhero.is-poster .bf-poster-slide {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity .65s ease;
+        }
+
+        /* ================= سبد خرید و پرداخت ================= */
+        .cart-trigger {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            flex: 0 0 auto;
+            border: 1px solid #cfe5d9;
+            border-radius: 13px;
+            padding: 9px 12px;
+            background: #ecfdf5;
+            color: #065f46;
+            font-size: 11px;
+            font-weight: 900;
+            white-space: nowrap;
+        }
+
+        .cart-trigger:hover { background: #d9f7e9; }
+
+        .cart-count {
+            display: inline-grid;
+            place-items: center;
+            min-width: 21px;
+            height: 21px;
+            padding: 0 5px;
+            border-radius: 999px;
+            background: var(--g);
+            color: #fff;
+            font-size: 10px;
+            line-height: 1;
+        }
+
+        .card { cursor: pointer; }
+        .card:focus-visible { outline: 3px solid #34a879; outline-offset: 3px; }
+        .card .photo { position: relative; }
+        .card .more { display: inline-flex; align-items: center; gap: 5px; color: var(--g2); font-size: 9px; font-weight: 900; }
+        .card-cart-btn {
+            position: absolute;
+            left: 9px;
+            bottom: 9px;
+            z-index: 5;
+            display: grid;
+            place-items: center;
+            width: 39px;
+            height: 39px;
+            padding: 0;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            background: #047857;
+            color: #fff;
+            box-shadow: 0 4px 13px rgba(0, 0, 0, .2);
+            transition: transform .18s ease, background .18s ease;
+        }
+        .card-cart-btn:hover { background: #065f46; transform: translateY(-2px); }
+        .card-cart-btn:active { transform: scale(.95); }
+        .card-cart-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+        .product-modalbox { width: min(620px, 100%); }
+        .product-detail-photo { position: relative; margin-top: 13px; width: 100%; max-height: 320px; aspect-ratio: 1.4; display: grid; place-items: center; overflow: hidden; border-radius: 17px; background: #f6f8f7; }
+        .product-detail-photo img { width: 100%; height: 100%; object-fit: contain; }
+        .product-detail-fallback { color: #89948f; font-size: 11px; }
+        .product-detail-price { margin-top: 13px; color: #047857; font-size: 17px; font-weight: 900; }
+        .product-detail-old-price { margin-right: 8px; color: #89948f; font-size: 11px; text-decoration: line-through; text-decoration-color: #dc2626; }
+        .product-detail-stock { display: inline-flex; margin-top: 9px; padding: 5px 10px; border-radius: 999px; background: #ecfdf5; color: #047857; font-size: 10px; font-weight: 900; }
+        .product-detail-stock.out { background: #fff1f2; color: #be123c; }
+        .product-add-btn { width: 100%; min-height: 46px; margin-top: 14px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 13px; background: #047857; color: #fff; font-size: 12px; font-weight: 900; }
+        .product-add-btn:hover { background: #065f46; }
+        .product-add-btn:disabled { opacity: .45; cursor: not-allowed; }
+
+        .cart-modalbox { width: min(720px, 100%); }
+        .payment-modalbox { width: min(560px, 100%); }
+        .modal-subtitle { margin: 3px 0 0; color: #7a8781; font-size: 10px; }
+
+        .cart-items {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+            margin-top: 16px;
+        }
+
+        .cart-row {
+            display: grid;
+            grid-template-columns: 62px minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 11px;
+            padding: 10px;
+            border: 1px solid #e8efeb;
+            border-radius: 15px;
+            background: #fff;
+        }
+
+        .cart-row-photo {
+            width: 62px;
+            height: 62px;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+            border-radius: 11px;
+            background: #f5f8f6;
+        }
+
+        .cart-row-photo img { width: 100%; height: 100%; object-fit: contain; }
+        .cart-row-info { min-width: 0; }
+        .cart-row-name { color: #26332d; font-size: 11px; font-weight: 900; line-height: 1.8; }
+        .cart-row-price { margin-top: 3px; color: #047857; font-size: 10px; font-weight: 900; }
+        .cart-row-side { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+        .qty-control { display: inline-flex; align-items: center; gap: 8px; direction: ltr; }
+        .qty-btn {
+            display: grid;
+            place-items: center;
+            width: 27px;
+            height: 27px;
+            border: 1px solid #dce9e2;
+            border-radius: 8px;
+            background: #f4fbf7;
+            color: #065f46;
+            font-size: 17px;
+            line-height: 1;
+        }
+        .qty-number { min-width: 17px; color: #25332c; font-size: 11px; font-weight: 900; text-align: center; }
+        .remove-item { border: 0; padding: 2px 4px; background: transparent; color: #be123c; font-size: 9px; font-weight: 800; }
+        .cart-empty { padding: 30px 12px; color: #75827b; font-size: 12px; text-align: center; }
+        .cart-bottom { margin-top: 15px; padding-top: 13px; border-top: 1px solid #e8efeb; }
+        .cart-total-row, .payment-total { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px; color: #425149; font-size: 12px; }
+        .cart-total-row strong, .payment-total strong { color: #047857; font-size: 17px; font-weight: 900; }
+        .checkout-btn, .continue-btn, .copy-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 0;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 900;
+        }
+        .checkout-btn { width: 100%; min-height: 44px; padding: 10px 14px; background: #047857; color: #fff; }
+        .checkout-btn:hover { background: #065f46; }
+        .checkout-btn:disabled { opacity: .45; cursor: not-allowed; }
+        .continue-btn { width: 100%; min-height: 40px; margin-top: 8px; padding: 9px 14px; background: #eff5f1; color: #456157; }
+
+        .payment-total { margin: 16px 0; padding: 13px 14px; border-radius: 14px; background: #effaf4; }
+        .order-contact-card {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            margin-top: 10px;
+            padding: 15px;
+            border: 1px solid #cfe8da;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #f4fcf7, #eaf8f0);
+        }
+        .order-contact-label { color: #687a70; font-size: 10px; }
+        .order-contact-number {
+            direction: ltr;
+            text-align: right;
+            color: #075f43;
+            font-size: 18px;
+            font-weight: 900;
+            letter-spacing: .5px;
+            overflow-wrap: anywhere;
+        }
+        .payment-note { margin-top: 12px; padding: 12px; border-radius: 12px; background: #f6f8f7; color: #52635a; font-size: 10px; line-height: 2; }
+        .payment-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 13px; }
+        .payment-actions .continue-btn { margin-top: 0; }
+        .payment-footnote { margin: 11px 0 0; color: #89948f; font-size: 9px; line-height: 1.9; }
+
+        .cart-toast {
+            position: fixed;
+            right: 50%;
+            bottom: 20px;
+            z-index: 100;
+            max-width: calc(100vw - 28px);
+            padding: 10px 16px;
+            border-radius: 12px;
+            background: #12392d;
+            color: #fff;
+            font-size: 11px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,.2);
+            opacity: 0;
+            visibility: hidden;
+            transform: translate(50%, 10px);
+            transition: .2s ease;
+        }
+        .cart-toast.show { opacity: 1; visibility: visible; transform: translate(50%, 0); }
+
+        @media(max-width:560px) {
+            .cart-trigger { order: 2; padding: 8px 10px; }
+            .search { order: 3; }
+            .cart-row { grid-template-columns: 52px minmax(0, 1fr) auto; gap: 8px; padding: 8px; }
+            .cart-row-photo { width: 52px; height: 52px; }
+            .cart-row-name { font-size: 10px; }
+            .cart-row-price { font-size: 9px; }
+            .qty-control { gap: 5px; }
+            .qty-btn { width: 25px; height: 25px; }
+            .payment-actions { grid-template-columns: 1fr; }
+        }
+
+        @media(prefers-reduced-motion:reduce) {
+            #bfhero .bf-copy,
+            #bfhero .bf-poster-slide,
+            .cart-toast { transition: none !important; }
+        }
+
     </style>
 </head>
 
@@ -1094,6 +1354,11 @@
             </div>
             <div class="search"><span class="glass">⌕</span><input id="search" type="search"
                     placeholder="جستجوی محصول..." autocomplete="off"></div>
+            <button class="cart-trigger" id="cartTrigger" type="button" aria-label="باز کردن سبد خرید">
+                <span aria-hidden="true">🛒</span>
+                <span>سبد خرید</span>
+                <b class="cart-count" id="cartCount">۰</b>
+            </button>
         </div>
     </header>
 
@@ -1113,6 +1378,11 @@
                     دکمهٔ زیر را بزنید یا از فیلتر «Black Friday» بالای فهرست استفاده کنید.</p>
                 <div class="bf-stat" id="bfstat"></div>
                 <button class="bf-cta" id="bfcta" type="button">مشاهده محصولات حراجی<span aria-hidden="true">←</span></button>
+            </div>
+
+            <!-- اسلاید دوم: تصویر پوستر آماده؛ مسیر فایل در public/images قرار می‌گیرد. -->
+            <div class="bf-poster-slide" id="bfposterslide" aria-hidden="true">
+                <img src="/products/banner.jpg" alt="پوستر فروش ویژه Black Friday">
             </div>
         </section>
 
@@ -1140,16 +1410,81 @@
     <main class="wrap" id="content"></main>
     <div class="footer">خرید آسان، انتخاب مطمئن</div>
 
-    <div class="modal" id="modal">
-        <div class="modalbox">
+    <!-- مودال جزئیات محصول؛ کلیک روی کارت فقط این پنجره را باز می‌کند. -->
+    <div class="modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+        <div class="modalbox product-modalbox">
             <div class="mhead">
-                <h3 id="mtitle"></h3><button class="close" id="close">×</button>
+                <h3 id="detailTitle">جزئیات محصول</h3>
+                <button class="close" id="closeProduct" type="button" aria-label="بستن">×</button>
             </div>
-            <div class="mphoto"><img id="mimage" alt=""></div>
-            <div class="mprice" id="mprice"></div>
-            <div class="mdesc" id="mdesc"></div>
+            <div class="product-detail-photo">
+                <img id="detailImage" alt="">
+                <div class="product-detail-fallback" id="detailImageFallback" hidden>تصویر محصول در دسترس نیست</div>
+            </div>
+            <div class="product-detail-price" id="detailPrice"></div>
+            <div class="mdesc" id="detailDescription"></div>
+            <span class="product-detail-stock" id="detailStock"></span>
+            <button class="product-add-btn" id="detailAddToCart" type="button">
+                <span aria-hidden="true">🛒</span>
+                افزودن به سبد خرید
+            </button>
         </div>
     </div>
+
+    <!-- مودال سبد خرید -->
+    <div class="modal" id="cartModal" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+        <div class="modalbox cart-modalbox">
+            <div class="mhead">
+                <div>
+                    <h3 id="cartTitle">سبد خرید شما</h3>
+                    <p class="modal-subtitle" id="cartSubtitle">محصولات انتخاب‌شده</p>
+                </div>
+                <button class="close" id="closeCart" type="button" aria-label="بستن">×</button>
+            </div>
+            <div class="cart-items" id="cartItems"></div>
+            <div class="cart-bottom" id="cartBottom">
+                <div class="cart-total-row"><span>جمع کل</span><strong id="cartTotal">۰ تومان</strong></div>
+                <button class="checkout-btn" id="checkoutBtn" type="button">ادامه برای ثبت سفارش</button>
+                <button class="continue-btn" id="continueShopping" type="button">ادامه انتخاب محصولات</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- مودال ثبت سفارش از طریق ارسال خلاصه خرید -->
+    <div class="modal" id="paymentModal" role="dialog" aria-modal="true" aria-labelledby="paymentTitle">
+        <div class="modalbox payment-modalbox">
+            <div class="mhead">
+                <div>
+                    <h3 id="paymentTitle">ارسال خلاصه خرید</h3>
+                    <p class="modal-subtitle">برای ثبت سفارش، خلاصه خرید را به شماره موبایل فروشگاه ارسال کنید.</p>
+                </div>
+                <button class="close" id="closePayment" type="button" aria-label="بستن">×</button>
+            </div>
+
+            <div class="payment-total">
+                <span>جمع کل سفارش</span>
+                <strong id="paymentTotal">۰ تومان</strong>
+            </div>
+
+            <div class="order-contact-card">
+                <span class="order-contact-label">شماره موبایل فروشگاه</span>
+                <strong class="order-contact-number" id="orderMobileNumber">شماره موبایل هنوز وارد نشده است</strong>
+            </div>
+
+            <div class="payment-note">
+                با زدن دکمهٔ زیر، نام محصولات، تعداد هر کالا و جمع کل سفارش کپی می‌شود. سپس متن کپی‌شده را به شماره موبایل بالا ارسال کنید.
+            </div>
+
+            <div class="payment-actions">
+                <button class="checkout-btn" id="copyOrderSummary" type="button">کپی خلاصه خرید</button>
+                <button class="continue-btn" id="backToCart" type="button">بازگشت به سبد خرید</button>
+            </div>
+
+            <p class="payment-footnote">پس از دریافت خلاصه خرید، فروشگاه سفارش شما را بررسی و برای هماهنگی با شما تماس می‌گیرد.</p>
+        </div>
+    </div>
+
+    <div class="cart-toast" id="cartToast" role="status" aria-live="polite"></div>
 
     <script>
         let products = [];
@@ -1163,17 +1498,249 @@
         const isSale = p => p.oldPrice !== undefined && p.oldPrice !== null && p.oldPrice !== "" && Number(p.oldPrice) > Number(p.price);
         const saleLabel = c => c === "همه" ? "همه محصولات" : (c === "حراج" ? "Black Friday" : info[c].title);
         let active = "همه", q = "";
-        const content = document.getElementById("content"), chips = document.getElementById("chips"), search = document.getElementById("search"), modal = document.getElementById("modal");
+        const content = document.getElementById("content"), chips = document.getElementById("chips"), search = document.getElementById("search");
+        const productModal = document.getElementById("productModal");
+        const cartModal = document.getElementById("cartModal"), paymentModal = document.getElementById("paymentModal");
+        const cartItemsBox = document.getElementById("cartItems");
+        const cart = new Map();
+        let selectedProductId = null;
+        let toastTimer = null;
+
+        // شماره موبایل فروشگاه را برای دریافت خلاصه سفارش در این قسمت وارد کنید.
+        // شماره واقعی عمداً حدس زده نشده است.
+        const ORDER_CONTACT = {
+            mobileNumber: "09214671106"
+        };
         document.getElementById("total").textContent = products.length;
         function esc(s) { return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[c])) }
+        const money = value => Number(value || 0).toLocaleString("fa-IR") + " تومان";
+        const priceOf = p => {
+            if (!p || p.price === null || p.price === undefined || p.price === "") return null;
+            const value = Number(p.price);
+            return Number.isFinite(value) && value >= 0 ? value : null;
+        };
+        function showToast(message) {
+            const toast = document.getElementById("cartToast");
+            if (!toast) return;
+            toast.textContent = message;
+            toast.classList.add("show");
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => toast.classList.remove("show"), 2400);
+        }
+        function saveCart() {
+            try { localStorage.setItem("hypermarket-cart", JSON.stringify([...cart.entries()])); }
+            catch (error) { /* سبد خرید در همین نشست همچنان کار می‌کند. */ }
+            updateCartCount();
+        }
+        function restoreCart() {
+            try {
+                const saved = JSON.parse(localStorage.getItem("hypermarket-cart") || "[]");
+                if (!Array.isArray(saved)) return;
+                saved.forEach(entry => {
+                    if (!Array.isArray(entry) || entry.length !== 2) return;
+                    const [id, quantity] = entry;
+                    const p = products.find(item => String(item.id) === String(id));
+                    const qty = Math.floor(Number(quantity));
+                    if (p && p.inStock !== false && priceOf(p) !== null && qty > 0) cart.set(String(id), qty);
+                });
+            } catch (error) { /* دادهٔ خراب یا غیردسترس‌پذیر نادیده گرفته می‌شود. */ }
+            updateCartCount();
+        }
+        function updateCartCount() {
+            const count = [...cart.values()].reduce((sum, qty) => sum + qty, 0);
+            const badge = document.getElementById("cartCount");
+            if (badge) badge.textContent = count.toLocaleString("fa-IR");
+        }
+        function cartEntries() {
+            return [...cart.entries()].map(([id, quantity]) => ({
+                product: products.find(p => String(p.id) === String(id)),
+                quantity
+            })).filter(item => item.product);
+        }
+        function cartTotalValue() {
+            return cartEntries().reduce((sum, item) => sum + (priceOf(item.product) || 0) * item.quantity, 0);
+        }
+        function updateBodyScroll() {
+            document.body.style.overflow = (productModal.classList.contains("show") || cartModal.classList.contains("show") || paymentModal.classList.contains("show")) ? "hidden" : "";
+        }
+        function openProduct(id) {
+            const p = products.find(item => String(item.id) === String(id));
+            if (!p) return;
+            selectedProductId = String(p.id);
+
+            document.getElementById("detailTitle").textContent = p.name || "جزئیات محصول";
+            document.getElementById("detailDescription").textContent = p.description || "توضیحی برای این محصول ثبت نشده است.";
+
+            const image = document.getElementById("detailImage");
+            const fallback = document.getElementById("detailImageFallback");
+            image.style.display = p.image ? "block" : "none";
+            fallback.hidden = Boolean(p.image);
+            image.alt = p.name || "تصویر محصول";
+            image.onerror = () => { image.style.display = "none"; fallback.hidden = false; };
+            image.src = p.image || "";
+
+            const priceBox = document.getElementById("detailPrice");
+            const currentPrice = priceOf(p);
+            if (currentPrice === null) {
+                priceBox.textContent = "قیمت این محصول مشخص نشده است";
+            } else {
+                priceBox.textContent = money(currentPrice);
+                if (isSale(p)) {
+                    const old = document.createElement("span");
+                    old.className = "product-detail-old-price";
+                    old.textContent = money(Number(p.oldPrice));
+                    priceBox.appendChild(old);
+                }
+            }
+
+            const stock = document.getElementById("detailStock");
+            stock.textContent = p.inStock === false ? "ناموجود" : "موجود";
+            stock.classList.toggle("out", p.inStock === false);
+            document.getElementById("detailAddToCart").disabled = p.inStock === false || currentPrice === null;
+
+            paymentModal.classList.remove("show");
+            cartModal.classList.remove("show");
+            productModal.classList.add("show");
+            updateBodyScroll();
+        }
+        function closeProductModal() {
+            productModal.classList.remove("show");
+            selectedProductId = null;
+            updateBodyScroll();
+        }
+        function addToCart(id) {
+            const p = products.find(item => String(item.id) === String(id));
+            if (!p) return;
+            if (p.inStock === false) { showToast("این محصول در حال حاضر ناموجود است."); return; }
+            if (priceOf(p) === null) { showToast("قیمت این محصول هنوز مشخص نشده و امکان افزودن آن نیست."); return; }
+            const key = String(p.id);
+            cart.set(key, (cart.get(key) || 0) + 1);
+            saveCart();
+            productModal.classList.remove("show");
+            selectedProductId = null;
+            openCartModal();
+        }
+        function renderCart() {
+            const entries = cartEntries();
+            const count = entries.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById("cartSubtitle").textContent = `${count.toLocaleString("fa-IR")} عدد کالا در ${entries.length.toLocaleString("fa-IR")} ردیف`;
+            if (!entries.length) {
+                cartItemsBox.innerHTML = '<div class="cart-empty">سبد خرید شما خالی است. از فهرست محصولات، کالای موردنظر را انتخاب کنید.</div>';
+            } else {
+                cartItemsBox.innerHTML = entries.map(({ product: p, quantity }) => {
+                    const image = p.image ? `<img src="${esc(p.image)}" alt="${esc(p.name)}" onerror="this.style.display='none'">` : '';
+                    return `<article class="cart-row" data-cart-row="${esc(p.id)}">
+                        <div class="cart-row-photo">${image}</div>
+                        <div class="cart-row-info">
+                            <div class="cart-row-name">${esc(p.name)}</div>
+                            <div class="cart-row-price">${money(priceOf(p))} · جمع: ${money(priceOf(p) * quantity)}</div>
+                        </div>
+                        <div class="cart-row-side">
+                            <div class="qty-control" aria-label="تغییر تعداد">
+                                <button class="qty-btn" type="button" data-cart-action="increase" data-id="${esc(p.id)}" aria-label="افزایش تعداد">+</button>
+                                <b class="qty-number">${quantity.toLocaleString("fa-IR")}</b>
+                                <button class="qty-btn" type="button" data-cart-action="decrease" data-id="${esc(p.id)}" aria-label="کاهش تعداد">−</button>
+                            </div>
+                            <button class="remove-item" type="button" data-cart-action="remove" data-id="${esc(p.id)}">حذف کالا</button>
+                        </div>
+                    </article>`;
+                }).join("");
+            }
+            document.getElementById("cartTotal").textContent = money(cartTotalValue());
+            document.getElementById("checkoutBtn").disabled = entries.length === 0;
+            document.getElementById("cartBottom").style.display = entries.length ? "block" : "none";
+            updateCartCount();
+        }
+        function openCartModal() {
+            renderCart();
+            paymentModal.classList.remove("show");
+            productModal.classList.remove("show");
+            cartModal.classList.add("show");
+            updateBodyScroll();
+        }
+        function closeCartModal() {
+            cartModal.classList.remove("show");
+            updateBodyScroll();
+        }
+        function renderPayment() {
+            document.getElementById("paymentTotal").textContent = money(cartTotalValue());
+            const mobile = String(ORDER_CONTACT.mobileNumber || "").trim();
+            document.getElementById("orderMobileNumber").textContent = mobile || "شماره موبایل فروشگاه هنوز وارد نشده است";
+        }
+        function openPaymentModal() {
+            if (!cart.size) return;
+            renderPayment();
+            cartModal.classList.remove("show");
+            productModal.classList.remove("show");
+            paymentModal.classList.add("show");
+            updateBodyScroll();
+        }
+        function closePaymentModal() {
+            paymentModal.classList.remove("show");
+            updateBodyScroll();
+        }
+        function orderSummaryText() {
+            const lines = cartEntries().map(({ product, quantity }, index) => `${index + 1}. ${product.name} — تعداد: ${quantity.toLocaleString("fa-IR")} — مبلغ: ${money(priceOf(product) * quantity)}`);
+            return `سلام، برای ثبت سفارش این محصولات را می‌خواهم:\n\n${lines.join("\n")}\n\nجمع کل سفارش: ${money(cartTotalValue())}\n\nلطفاً سفارش را بررسی و تأیید کنید. `;
+        }
+        async function copyText(value, successMessage) {
+            try {
+                if (!navigator.clipboard || !navigator.clipboard.writeText) throw new Error("clipboard unavailable");
+                await navigator.clipboard.writeText(value);
+                showToast(successMessage);
+            } catch (error) {
+                showToast("کپی خودکار در این مرورگر در دسترس نیست.");
+            }
+        }
+
+        cartItemsBox.addEventListener("click", event => {
+            const button = event.target.closest("button[data-cart-action]");
+            if (!button) return;
+            const id = String(button.dataset.id);
+            const current = cart.get(id) || 0;
+            if (button.dataset.cartAction === "increase") cart.set(id, current + 1);
+            if (button.dataset.cartAction === "decrease") {
+                if (current <= 1) cart.delete(id);
+                else cart.set(id, current - 1);
+            }
+            if (button.dataset.cartAction === "remove") cart.delete(id);
+            saveCart();
+            renderCart();
+        });
+        document.getElementById("cartTrigger").addEventListener("click", openCartModal);
+        document.getElementById("closeProduct").addEventListener("click", closeProductModal);
+        document.getElementById("detailAddToCart").addEventListener("click", () => {
+            if (selectedProductId !== null) addToCart(selectedProductId);
+        });
+        productModal.addEventListener("click", event => { if (event.target === productModal) closeProductModal(); });
+        document.getElementById("closeCart").addEventListener("click", closeCartModal);
+        document.getElementById("continueShopping").addEventListener("click", closeCartModal);
+        document.getElementById("checkoutBtn").addEventListener("click", openPaymentModal);
+        document.getElementById("closePayment").addEventListener("click", closePaymentModal);
+        document.getElementById("backToCart").addEventListener("click", openCartModal);
+        document.getElementById("copyOrderSummary").addEventListener("click", () => copyText(orderSummaryText(), "خلاصه سفارش کپی شد."));
+        cartModal.addEventListener("click", event => { if (event.target === cartModal) closeCartModal(); });
+        paymentModal.addEventListener("click", event => { if (event.target === paymentModal) closePaymentModal(); });
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape") {
+                if (paymentModal.classList.contains("show")) closePaymentModal();
+                else if (cartModal.classList.contains("show")) closeCartModal();
+                else if (productModal.classList.contains("show")) closeProductModal();
+            }
+        });
         function chipRender() { chips.innerHTML = order.map(c => `<button class="chip ${c === active ? "active" : ""}${c === "حراج" ? " chip-bf" : ""}" data-c="${c}">${saleLabel(c)}</button>`).join(""); chips.querySelectorAll("button").forEach(b => b.onclick = () => { active = b.dataset.c; render() }) }
         function card(p) {
-            // محصول حراجی: قاب قرمز/مشکی + روبان BLACK FRIDAY
-            // فاز و تأخیر مستقل برای هر محصول و جدا برای هر یک از دو حلقه
+            // کلیک روی کارت جزئیات را باز می‌کند؛ آیکون سبد خرید افزودن مستقیم انجام می‌دهد.
             const sale = isSale(p);
             const d1 = "-" + ((Number(p.id) * 137) % 1600) + "ms";
             const d2 = "-" + ((Number(p.id) * 311 + 570) % 1900) + "ms";
-            return `<article class="card${sale ? " sale" : ""}" data-id="${p.id}"${sale ? ` style="--bf-d1:${d1};--bf-d2:${d2}"` : ""}>${sale ? `<span class="bf-ribbon" aria-hidden="true"><i>BLACK FRIDAY</i></span>` : ""}<div class="photo"><img src="${p.image}" alt="${esc(p.name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="fallback">تصویر محصول در دسترس نیست</div></div><div class="body"><div class="title">${esc(p.name)}</div><div class="desc">${esc(p.description)}</div><div class="price-line">${p.price !== null && p.price !== "" ? (sale ? `<div class="price-box"><span class="old-price">${esc(Number(p.oldPrice).toLocaleString("fa-IR"))} تومان</span><b>${esc(Number(p.price).toLocaleString("fa-IR"))} تومان</b></div>` : `<b>${esc(Number(p.price).toLocaleString("fa-IR"))} تومان</b>`) : "<span></span>"}${sale ? `<span class="sale-badge">حراج</span>` : ""}<span class="stock-badge ${p.inStock === false ? "out" : ""}">${p.inStock === false ? "ناموجود" : "موجود"}</span></div><div class="more">مشاهده جزئیات ←</div></div></article>`
+            const priceMarkup = p.price !== null && p.price !== ""
+                ? (sale
+                    ? `<div class="price-box"><span class="old-price">${esc(Number(p.oldPrice).toLocaleString("fa-IR"))} تومان</span><b>${esc(Number(p.price).toLocaleString("fa-IR"))} تومان</b></div>`
+                    : `<b>${esc(Number(p.price).toLocaleString("fa-IR"))} تومان</b>`)
+                : "<span></span>";
+
+            return `<article class="card${sale ? " sale" : ""}" data-id="${esc(p.id)}" tabindex="0" aria-label="مشاهده جزئیات ${esc(p.name)}"${sale ? ` style="--bf-d1:${d1};--bf-d2:${d2}"` : ""}>${sale ? `<span class="bf-ribbon" aria-hidden="true"><i>BLACK FRIDAY</i></span>` : ""}<div class="photo"><img src="${esc(p.image || "")}" alt="${esc(p.name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="fallback">تصویر محصول در دسترس نیست</div><button class="card-cart-btn" type="button" data-card-action="add" data-id="${esc(p.id)}" aria-label="افزودن ${esc(p.name)} به سبد خرید" title="افزودن به سبد خرید"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h2l2.1 10.4a2 2 0 0 0 2 1.6h8.5a2 2 0 0 0 1.9-1.4L22 7H6"/><circle cx="10" cy="19.5" r="1.2"/><circle cx="18" cy="19.5" r="1.2"/></svg></button></div><div class="body"><div class="title">${esc(p.name)}</div><div class="desc">${esc(p.description)}</div><div class="price-line">${priceMarkup}${sale ? `<span class="sale-badge">حراج</span>` : ""}<span class="stock-badge ${p.inStock === false ? "out" : ""}">${p.inStock === false ? "ناموجود" : "موجود"}</span></div><div class="more">مشاهده جزئیات ←</div></div></article>`;
         }
 
         // اولویت حراج فقط در سطح «هر محصول» است (نه دسته‌بندی/زیرگروه):
@@ -1217,9 +1784,25 @@
                 .toLocaleLowerCase("fa")
                 .includes(qq);
 
-            const bindCards = () => content.querySelectorAll(".card").forEach(el =>
-                el.onclick = () => openProduct(+el.dataset.id)
-            );
+            const bindCards = () => content.querySelectorAll(".card").forEach(el => {
+                el.onclick = event => {
+                    if (event.target.closest(".card-cart-btn")) return;
+                    openProduct(el.dataset.id);
+                };
+                el.onkeydown = event => {
+                    if ((event.key === "Enter" || event.key === " ") && !event.target.closest("button")) {
+                        event.preventDefault();
+                        openProduct(el.dataset.id);
+                    }
+                };
+            });
+            content.querySelectorAll(".card-cart-btn").forEach(button => {
+                button.onclick = event => {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    addToCart(button.dataset.id);
+                };
+            });
 
             // فیلتر حراج: تمام محصولات حراجیِ همه گروه‌ها و زیرگروه‌ها
             if (active === "حراج") {
@@ -1263,9 +1846,6 @@
             bindCards();
         }
 
-        function openProduct(id) { const p = products.find(x => x.id === id); if (!p) return; document.getElementById("mtitle").textContent = p.name; document.getElementById("mdesc").textContent = p.description; const i = document.getElementById("mimage"); i.src = p.image; i.alt = p.name; document.getElementById("mprice").innerHTML = p.price !== null && p.price !== "" ? (p.oldPrice ? `<span class="old-price">${esc(Number(p.oldPrice).toLocaleString("fa-IR"))} تومان</span>` : "") + esc(Number(p.price).toLocaleString("fa-IR")) + " تومان" : ""; modal.classList.add("show"); document.body.style.overflow = "hidden" }
-        function closeModal() { modal.classList.remove("show"); document.body.style.overflow = "" }
-        document.getElementById("close").onclick = closeModal; modal.onclick = e => { if (e.target === modal) closeModal() }; document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal() });
         search.oninput = e => { q = e.target.value; render() };
         async function loadProducts() {
             try {
@@ -1277,6 +1857,7 @@
                 return;
             }
             document.getElementById("total").textContent = products.length;
+            restoreCart();
             heroStat();
             render();
         }
@@ -1294,6 +1875,32 @@
                 const target = document.getElementById("content");
                 if (target) target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
             };
+        })();
+
+
+
+        /* ================= چرخش دو اسلاید هیرو =================
+           قاب و ارتفاع هیرو ثابت می‌ماند؛ تصویر پوستر در لایهٔ مطلق است. */
+        (function initHeroSlider() {
+            const hero = document.getElementById("bfhero");
+            const poster = document.getElementById("bfposterslide");
+            const image = poster && poster.querySelector("img");
+            const copy = hero && hero.querySelector(".bf-copy");
+            if (!hero || !poster || !image || hero.dataset.sliderInitialized === "true") return;
+            hero.dataset.sliderInitialized = "true";
+
+            let posterReady = image.complete && image.naturalWidth > 0;
+            image.addEventListener("load", () => { posterReady = true; });
+            image.addEventListener("error", () => { posterReady = false; hero.classList.remove("is-poster"); });
+
+            let showPoster = false;
+            window.setInterval(() => {
+                if (!posterReady) return;
+                showPoster = !showPoster;
+                hero.classList.toggle("is-poster", showPoster);
+                poster.setAttribute("aria-hidden", String(!showPoster));
+                if (copy) copy.setAttribute("aria-hidden", String(showPoster));
+            }, 5000);
         })();
 
         /* بیشترین تخفیف از روی دادهٔ واقعی products.json محاسبه می‌شود (بدون دادهٔ ساختگی) */
