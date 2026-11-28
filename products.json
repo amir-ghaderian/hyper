@@ -1205,7 +1205,7 @@
     "id": 144,
     "name": "مایع کرمی سیف پاک‌کننده چندمنظوره سطوح و منسوجات",
     "category": "شوینده",
-    "description": "مایع کرمی سیف، پاک‌ک��نده چندمنظوره سطوح و منسوجات، مناسب برای پاک کردن لکه‌ها و آلودگی‌های روزمره و کمک به تمیزی بهتر سطوح و پارچه‌ها.",
+    "description": "مایع کرمی سیف، پاک‌ک��نده چندمنظوره سطوح و منسوجات، م��اسب برای پاک کردن لکه‌ها و آلودگی‌های روزمره و کمک به تمیزی بهتر سطوح و پارچه‌ها.",
     "image": "./products/0145.jpeg",
     "price": 315000,
     "inStock": true
@@ -1560,7 +1560,7 @@
     "id": 183,
     "name": "شامپو بدن بی بیوتی",
     "category": "بهداشتی",
-    "description": "شامپو بدن بی بیوتی رایحه نمک دریای تازه و ترنج\nحجم ۲۵۰ میل\nساخ�� کشور ترکیه",
+    "description": "شامپو بدن بی بیوتی رایحه نمک دریای تازه و ترنج\nحجم ۲۵۰ میل\nساخ���� کشور ترکیه",
     "image": "./products/279bb71d-6b05-4925-8a98-c7209f2e045c.jpg",
     "price": 460000,
     "inStock": true
@@ -1650,7 +1650,7 @@
     "id": 193,
     "name": "شکلات هوبی",
     "category": "مواد غذایی",
-    "description": "شکلات هوبی با مغز فندق اولکر \n600 گرم\n بسته 100 عددی",
+    "description": "شکلات هوبی با مغز فندق اولکر \n600 گرم",
     "image": "./products/f89697eb-c1a5-4fe2-b3b5-991b8f15e31e.jpg",
     "price": 30000,
     "inStock": true
@@ -1661,7 +1661,7 @@
     "category": "شوینده",
     "description": "خوشبوکننده و نرم‌کننده لباس «دوآ» (Doa) - رایحه کهربا و رز",
     "image": "./products/fb9f695b-d8bf-440e-b2ab-b4ac7c077c12.jpg",
-    "price": null,
+    "price": 1300000,
     "inStock": true
   },
   {
@@ -1670,7 +1670,7 @@
     "category": "شوینده",
     "description": "خوشبوکننده و نرم‌کننده لباس «دوآ» (Doa) - رایحه   گل لیلیوم و  لوتوس",
     "image": "./products/a77b751d-be05-449b-a810-cbcdc5625cad.jpg",
-    "price": null,
+    "price": 1300000,
     "inStock": true
   },
   {
@@ -1688,7 +1688,7 @@
     "category": "بهداشتی",
     "description": "سپری خوشبوکننده لباس و سطوح پارچه‌ای یوموش Yumoş \nرایحه کهربا\n۴۵۰ میلی‌لیتر",
     "image": "./products/02f0cb43-1173-47ad-b31b-854f0dda6a91.jpg",
-    "price": null,
+    "price": 1100000,
     "inStock": true
   },
   {
@@ -1724,7 +1724,7 @@
     "category": "بهداشتی",
     "description": "اسپری خوشبوکنندهوا «حیات آلفا» (Hayat Alfa) \n مدل «باغ گل» (Flower Garden) \n۳۵۰ میلی‌لیتر",
     "image": "./products/278557cf-2c83-49c5-bed0-0a3f9b8d4d75.jpg",
-    "price": null,
+    "price": 750000,
     "inStock": true
   },
   {
@@ -1733,7 +1733,7 @@
     "category": "شوینده",
     "description": "خوشبوکننده لباس لنور 155گرم Lenor رایحه گل یاس و سدر سپید",
     "image": "./products/60763518-7db9-4542-bef6-842f027ff001.jpg",
-    "price": null,
+    "price": 1450000,
     "inStock": true
   },
   {
@@ -1742,7 +1742,7 @@
     "category": "شوینده",
     "description": "خوشبو کننده لباس لنور بنفش\n lenor \nوزن 176 گرم",
     "image": "./products/05696dc5-fe24-4ad3-a05d-076cbbc21552.jpg",
-    "price": null,
+    "price": 1450000,
     "inStock": true
   },
   {
@@ -1751,7 +1751,7 @@
     "category": "شوینده",
     "description": "خوشبوکننده لباس لنور با رایحه گل های تازه پنبه \nمدل Cool Cotton \nوزن 155 گرم",
     "image": "./products/4236b07b-c0bf-482e-8599-f9916ab6f051.jpg",
-    "price": null,
+    "price": 1450000,
     "inStock": true
   },
   {
@@ -1760,7 +1760,7 @@
     "category": "شوینده",
     "description": "خوشبو کننده لباس لنوور مدل Fresh وزن 175 گرم",
     "image": "./products/8b902b2c-4de5-487e-89f0-f14b8769e595.jpg",
-    "price": null,
+    "price": 1450000,
     "inStock": true
   },
   {
@@ -1778,7 +1778,7 @@
     "category": "مواد غذایی",
     "description": "ورمیشل آنکارا - 500 گرم",
     "image": "./products/61e4664f-9c45-4fd9-be1a-98dcc8072863.jpg",
-    "price": null,
+    "price": 400000,
     "inStock": true
   },
   {
@@ -2024,7 +2024,7 @@
     "category": "بهداشتی",
     "description": "استیک ضد تعریق زنانه بدون آلومینیوم رکسونا \nمدل Powder Dry \nحجم 40 میلی لیتر",
     "image": "./products/37538838-41f5-4976-8964-358b57d7f934.jpg",
-    "price": null,
+    "price": 1300000,
     "inStock": true
   },
   {
@@ -2116,7 +2116,7 @@
     "category": "بهداشتی",
     "description": "",
     "image": "./products/fd94a8a8-9ed1-4675-a0bd-9f92a3114310.jpg",
-    "price": null,
+    "price": 340000,
     "inStock": true
   },
   {
@@ -2505,15 +2505,6 @@
     "inStock": true
   },
   {
-    "id": 293,
-    "name": "دستمال حوله ای",
-    "category": "بهداشتی",
-    "description": "دستمال حوله ای ۳ لایه ۴ رول تنو ۳۹۰",
-    "image": "./products/6f00e322-5a89-4714-a7d8-09a8f925c09e.jpg",
-    "price": null,
-    "inStock": true
-  },
-  {
     "id": 289,
     "name": "نوشابه پرتقالی فانتا حجم 1.5 لیتری (بسته 6 عددی)",
     "category": "نوشیدنی",
@@ -2618,7 +2609,7 @@
     "category": "مواد غذایی",
     "description": "روغن آفتابگردان غنی شده با ویتامین D اویلا - 2 ‌لیتر،مخصوص پخت و پز و سالاد",
     "image": "./products/93c5ab83-bea0-4cec-8d81-f9892961ebc1.jpg",
-    "price": null,
+    "price": 720000,
     "inStock": true
   },
   {
